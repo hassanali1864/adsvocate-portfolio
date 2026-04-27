@@ -105,13 +105,13 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 .problem-card{padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:all .25s}
 .problem-card:hover{box-shadow:var(--sh);transform:translateY(-3px)}
-.problem-num{font-family:'Instrument Serif',serif;font-size:2.4rem;color:var(--ac);opacity:.22;line-height:1;display:block;margin-bottom:12px}
+.problem-num{font-family:'Instrument Serif',serif;font-size:2.4rem;color:var(--ac);line-height:1;display:block;margin-bottom:12px}
 .problem-card h3{font-family:'Outfit',sans-serif;font-size:.95rem;font-weight:700;color:var(--text);margin-bottom:8px;line-height:1.3}
 .problem-card p{font-size:.85rem;color:var(--t2);line-height:1.65;text-wrap:pretty}
 .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:56px}
 .service-card{padding:32px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);transition:all .25s}
 .service-card:hover{box-shadow:var(--sh);transform:translateY(-3px);border-color:rgba(43,140,127,.2)}
-.service-num{font-family:'Instrument Serif',serif;font-size:3rem;color:var(--ac);opacity:.1;line-height:1;display:block;margin-bottom:8px}
+.service-num{font-family:'Instrument Serif',serif;font-size:3rem;color:var(--ac);line-height:1;display:block;margin-bottom:8px}
 .service-card h3{font-family:'Instrument Serif',serif;font-size:1.2rem;color:var(--text);margin-bottom:10px}
 .service-card p{font-size:.85rem;color:var(--t2);line-height:1.65;margin-bottom:14px;text-wrap:pretty}
 .service-highlight{font-size:.76rem;font-weight:600;color:var(--ac)}
