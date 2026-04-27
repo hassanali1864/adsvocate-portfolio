@@ -14,6 +14,8 @@ import p4img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_44_54 AM.pn
 import p4img4 from './assets/projects/ChatGPT Image Apr 25, 2026, 05_34_28 AM.png';
 import p4img5 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_08_43 AM.png';
 import hassanPhoto from './assets/hassan.jpg';
+import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
+import { Download } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // STYLES  (injected at runtime — copy to App.css
@@ -503,6 +505,7 @@ function Hero() {
             <div className="hero-ctas fade-up d4">
               <button className="btn-primary" onClick={() => navScrollTo("contact")}>Book a Free Audit <Arr /></button>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp Me</a>
+              <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="btn-outline"><Download size={15} />Download Resume</a>
             </div>
             <div className="hero-tags fade-up d5">
               {["Google Ads Certified", "GA4 Certified", "Meta Ads Certified"].map((t, i) => <span key={i} className="hero-tag">{t}</span>)}
