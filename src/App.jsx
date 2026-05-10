@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
+import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
 import p1img1 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_44_45 AM.png';
 import p1img2 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_40_44 AM.png';
 import p1img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 04_36_42 AM.png';
@@ -75,7 +76,7 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .hero-sub{font-size:.82rem;color:var(--t3);margin-bottom:28px}
 .hero-ctas{display:flex;gap:12px;margin-bottom:28px;flex-wrap:wrap}
 .hero-tags{display:flex;gap:8px;flex-wrap:wrap}
-.hero-tag{padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.74rem;font-weight:500;color:var(--t2)}
+.hero-tag{padding:5px 12px;background:var(--card);border:1px solid var(--border);border-radius:6px;font-size:.74rem;font-weight:500;color:var(--t2)}.hero-dl-link{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;color:var(--t2);font-weight:500;text-decoration:none;margin-bottom:18px;transition:color .2s}.hero-dl-link:hover{color:var(--ac)}
 .fade-up{opacity:0;transform:translateY(22px);animation:fadeUp .7s ease forwards}
 .d1{animation-delay:.05s}.d2{animation-delay:.18s}.d3{animation-delay:.3s}.d4{animation-delay:.42s}.d5{animation-delay:.55s}
 @keyframes fadeUp{to{opacity:1;transform:translateY(0)}}
@@ -97,9 +98,9 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 @keyframes chipFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-8px)}}
 .hero-float-chip strong{display:block;font-family:'Instrument Serif',serif;font-size:1.1rem;color:var(--ac);line-height:1}
 .hero-float-chip span{font-size:.6rem;color:var(--t3)}
-.stats-strip{border-top:1px solid var(--border);border-bottom:1px solid var(--border);padding:28px 0;background:var(--card);position:relative;z-index:1}
+.stats-strip{border-top:2px solid var(--ac);border-bottom:1px solid var(--border);padding:28px 0;background:var(--card);position:relative;z-index:1}
 .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.stat-item{text-align:center}
+.stat-item{text-align:center}.stat-item:not(:last-child){border-right:1px solid var(--border)}
 .stat-value{font-family:'Instrument Serif',serif;font-size:1.8rem;color:var(--ac);line-height:1}
 .stat-label{font-size:.7rem;color:var(--t3);margin-top:4px;font-weight:500}
 .problem-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -138,7 +139,7 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .project-card-hint{font-size:.74rem;color:var(--t3);margin-top:12px;font-style:italic}
 .work-links{display:flex;justify-content:center;gap:12px}
 .case-study-overlay{position:fixed;inset:0;background:rgba(26,35,50,.5);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(4px)}
-.case-study-panel{background:var(--card);border:1px solid var(--border);border-radius:20px;max-width:800px;width:100%;position:relative;box-shadow:var(--shb);animation:slideUp .3s ease}
+.case-study-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);max-width:800px;width:100%;position:relative;box-shadow:var(--shb)}
 @keyframes slideUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
 .case-study-close{position:absolute;top:20px;right:20px;width:36px;height:36px;border-radius:50%;background:var(--bg);border:1px solid var(--border);cursor:pointer;display:flex;align-items:center;justify-content:center;color:var(--t2);transition:all .2s;z-index:10}
 .case-study-close:hover{background:var(--bg-alt);color:var(--text)}
@@ -157,8 +158,8 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .case-study-footer{padding:18px 36px;border-top:1px solid var(--border)}
 .case-study-link{font-size:.8rem;color:var(--ac);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:500}
 .case-study-link:hover{text-decoration:underline}
-.project-image{margin:20px 0;border-radius:12px;overflow:hidden}
-.img-placeholder{background:var(--bg);border:1.5px dashed rgba(43,140,127,.2);border-radius:12px;padding:32px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:120px;justify-content:center;color:var(--t2);transition:all .2s;cursor:pointer}
+.project-image{margin:20px 0;border-radius:var(--rs);overflow:hidden}
+.img-placeholder{background:var(--bg);border:1.5px dashed rgba(43,140,127,.2);border-radius:var(--rs);padding:32px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:120px;justify-content:center;color:var(--t2);transition:all .2s;cursor:pointer}
 .img-placeholder:hover{border-color:var(--ac);background:var(--ac-l)}
 .img-placeholder span{font-size:.78rem;font-weight:500;line-height:1.4}
 .img-placeholder small{font-size:.62rem;color:var(--t3)}
@@ -184,7 +185,7 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .faq-open .faq-q span{color:var(--ac)}
 .faq-toggle{width:24px;height:24px;border-radius:50%;flex-shrink:0;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--ac);transition:all .2s}
 .faq-open .faq-toggle{background:var(--ac);color:#fff}
-.faq-a{overflow:hidden;transition:max-height .3s ease}
+.faq-a{overflow:hidden}
 .faq-a p{padding:0 22px 18px;font-size:.85rem;color:var(--t2);line-height:1.72}
 .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:stretch}
 .contact-col{background:var(--card);border:1px solid var(--border);border-radius:var(--r);padding:28px}
@@ -222,7 +223,6 @@ textarea.field{resize:vertical;min-height:90px}
   .contact-grid{grid-template-columns:1fr}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
-  .case-study-panel{border-radius:16px}
   .case-study-header,.case-study-body,.case-study-footer{padding-left:22px;padding-right:22px}
   .case-study-metrics{padding-left:22px;padding-right:22px;grid-template-columns:1fr}
   .form-row{grid-template-columns:1fr}
@@ -231,6 +231,8 @@ textarea.field{resize:vertical;min-height:90px}
   .hero-photo-col{width:100%;display:flex;justify-content:center}
   .project-card-hint{display:none}
   .case-study-overlay{padding:28px 16px}
+  .case-study-panel{border-radius:var(--r)}
+  .stat-item:not(:last-child){border-right:none}
 }
 @media(max-width:480px){
   .container{padding:0 18px}
@@ -253,6 +255,13 @@ textarea.field{resize:vertical;min-height:90px}
   .work-links{flex-direction:column;align-items:center}
   .cert-card{padding:18px}
   .footer-links{justify-content:center}
+}
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
+  .reveal{opacity:1;transform:none;transition:none}
+  .reveal.revealed{opacity:1;transform:none}
+  .fade-up,.fade-in-photo{animation:none;opacity:1;transform:none}
+  .pulse-dot,.hero-photo-ring,.hero-float-chip,.hero-photo{animation:none}
 }
 `;
 
@@ -423,11 +432,16 @@ function StatCount({ raw, display, started }) {
 }
 
 function Reveal({ children, delay = 0, className = "" }) {
-  const [ref, revealed] = useReveal();
   return (
-    <div ref={ref} className={`reveal ${revealed ? "revealed" : ""} ${className}`} style={{ transitionDelay: `${delay}ms` }}>
+    <motion.div
+      className={className}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: 0.15 }}
+      transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1], delay: delay / 1000 }}
+    >
       {children}
-    </div>
+    </motion.div>
   );
 }
 
@@ -436,7 +450,7 @@ function ProjectImage({ src, caption, onClick }) {
   return (
     <div className="project-image" onClick={onClick} style={{ cursor: "pointer" }}>
       {!failed ? (
-        <img src={src} alt={caption} onError={() => setFailed(true)} style={{ width: "100%", borderRadius: 12, display: "block" }} />
+        <img src={src} alt={caption} onError={() => setFailed(true)} style={{ width: "100%", borderRadius: "var(--rs)", display: "block" }} />
       ) : (
         <div className="img-placeholder">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" style={{ opacity: .35 }}>
@@ -474,14 +488,22 @@ function Nav() {
         </div>
         <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}><span/><span/><span/></button>
       </div>
-      {menuOpen && (
-        <div className="nav-mobile">
-          {["services", "work", "certifications", "contact"].map(s => (
-            <button key={s} className="nav-link" onClick={() => { navScrollTo(s); setMenuOpen(false); }}>{s}</button>
-          ))}
-          <button className="btn-primary" style={{ width: "100%", justifyContent: "center" }} onClick={() => { navScrollTo("contact"); setMenuOpen(false); }}>Let's Talk</button>
-        </div>
-      )}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            className="nav-mobile"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.22, ease: "easeOut" }}
+          >
+            {["services", "work", "certifications", "contact"].map(s => (
+              <button key={s} className="nav-link" onClick={() => { navScrollTo(s); setMenuOpen(false); }}>{s}</button>
+            ))}
+            <button className="btn-primary" style={{ width: "100%", justifyContent: "center" }} onClick={() => { navScrollTo("contact"); setMenuOpen(false); }}>Let's Talk</button>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </nav>
   );
 }
@@ -505,14 +527,19 @@ function Hero() {
             <div className="hero-ctas fade-up d4">
               <button className="btn-primary" onClick={() => navScrollTo("contact")}>Book a Free Audit <Arr /></button>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp Me</a>
-              <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="btn-outline"><Download size={15} />Download Resume</a>
             </div>
+            <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="hero-dl-link fade-up d5"><Download size={13} />Download Resume</a>
             <div className="hero-tags fade-up d5">
               {["Google Ads Certified", "GA4 Certified", "Meta Ads Certified"].map((t, i) => <span key={i} className="hero-tag">{t}</span>)}
             </div>
 
           </div>
-          <div className="hero-photo-col fade-in-photo">
+          <motion.div
+            className="hero-photo-col"
+            initial={{ opacity: 0, scale: 0.94 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1], delay: 0.2 }}
+          >
             <div className="hero-photo-wrapper" ref={photoRef}
               onMouseMove={e => { const r = photoRef.current?.getBoundingClientRect(); if (!r) return; setTilt({ x: ((e.clientX - r.left) / r.width - .5) * 12, y: -(((e.clientY - r.top) / r.height) - .5) * 12 }); }}
               onMouseLeave={() => setTilt({ x: 0, y: 0 })}
@@ -525,7 +552,7 @@ function Hero() {
             </div>
             <div className="hero-float-chip chip-right"><strong>52%</strong><span>MoM Growth</span></div>
             <div className="hero-float-chip chip-left"><strong>$20k+</strong><span>Revenue Tracked</span></div>
-          </div>
+          </motion.div>
         </div>
       </div>
     </section>
@@ -536,13 +563,31 @@ function StatsStrip() {
   const [ref, inView] = useReveal(0.2);
   const stats = [{ n: 135, d: "135", l: "Leads Generated" }, { n: 8.54, d: "$8.54", l: "Avg Cost Per Lead" }, { n: 3240, d: "3,240", l: "Clicks Delivered" }, { n: 8.0, d: "8.0/10", l: "Event Match Quality" }];
   return (
-    <div className="stats-strip" ref={ref}>
+    <section className="stats-strip" ref={ref} aria-label="Key results">
       <div className="container">
-        <div className="stats-grid">
-          {stats.map((s, i) => <div key={i} className="stat-item"><div className="stat-value"><StatCount raw={s.n} display={s.d} started={inView} /></div><div className="stat-label">{s.l}</div></div>)}
-        </div>
+        <motion.div
+          className="stats-grid"
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.3 }}
+          variants={{ hidden: {}, visible: { transition: { staggerChildren: 0.1 } } }}
+        >
+          {stats.map((s, i) => (
+            <motion.div
+              key={i}
+              className="stat-item"
+              variants={{
+                hidden: { opacity: 0, y: 20 },
+                visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
+              }}
+            >
+              <div className="stat-value"><StatCount raw={s.n} display={s.d} started={inView} /></div>
+              <div className="stat-label">{s.l}</div>
+            </motion.div>
+          ))}
+        </motion.div>
       </div>
-    </div>
+    </section>
   );
 }
 
@@ -571,8 +616,8 @@ function PlatformGrid() {
         <div key={i} className="platform-item"
           onMouseEnter={() => setHi(i)} onMouseLeave={() => setHi(null)}
           style={{ background: hi === i ? `${p.color}14` : `${p.color}07`, borderColor: hi === i ? `${p.color}50` : `${p.color}20`, transform: hi === i ? "translateY(-4px)" : "none", boxShadow: hi === i ? `0 8px 24px ${p.color}20` : "none" }}>
-          <Ico slug={p.slug} size={26} style={{ opacity: hi === i ? .9 : .5, transition: "opacity .2s" }} />
-          <span style={{ color: hi === i ? "var(--text)" : "var(--t3)", transition: "color .2s" }}>{p.name}</span>
+          <Ico slug={p.slug} size={26} style={{ opacity: hi === i ? .9 : .72, transition: "opacity .2s" }} />
+          <span style={{ color: hi === i ? "var(--text)" : "var(--t2)", transition: "color .2s" }}>{p.name}</span>
         </div>
       ))}
     </div>
@@ -606,9 +651,13 @@ function ProjectCard({ project, onOpen, index }) {
   return (
     <Reveal delay={index * 120}>
       <div ref={setRef} className={`project-card ${hovered ? "project-card-hover" : ""}`}
+        role="button"
+        tabIndex={0}
+        aria-label={`View case study: ${project.title}`}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => { setHovered(false); setTilt({ x: 0, y: 0 }); }}
         onMouseMove={e => { const r = cardRef.current?.getBoundingClientRect(); if (!r) return; setTilt({ x: ((e.clientX - r.left) / r.width - .5) * 8, y: -(((e.clientY - r.top) / r.height) - .5) * 8 }); }}
+        onKeyDown={e => { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); onOpen(project); } }}
         style={{ transform: `perspective(900px) rotateX(${tilt.y}deg) rotateY(${tilt.x}deg) translateY(${hovered ? "-4px" : "0"})` }}
         onClick={() => onOpen(project)}>
         <div className="project-card-glow" style={{ opacity: hovered ? 1 : 0 }}></div>
@@ -641,7 +690,7 @@ function Lightbox({ src, caption, onClose }) {
     <div className="lightbox" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
       <div className="lightbox-inner" onClick={e => e.stopPropagation()}>
-        <img src={src} alt={caption} style={{ maxWidth: "100%", maxHeight: "85vh", borderRadius: 8 }} onError={e => { e.target.style.display = "none"; }} />
+        <img src={src} alt={caption} style={{ maxWidth: "100%", maxHeight: "85vh", borderRadius: "var(--rs)" }} onError={e => { e.target.style.display = "none"; }} />
         <p className="lightbox-caption">{caption}</p>
       </div>
     </div>
@@ -650,6 +699,8 @@ function Lightbox({ src, caption, onClose }) {
 
 function CaseStudy({ project, onClose }) {
   const [lightboxImg, setLightboxImg] = useState(null);
+  const overlayRef = useRef(null);
+  const { scrollYProgress } = useScroll({ container: overlayRef });
   useEffect(() => {
     document.body.style.overflow = "hidden";
     const h = e => { if (e.key === "Escape") { if (lightboxImg) setLightboxImg(null); else onClose(); } };
@@ -659,9 +710,25 @@ function CaseStudy({ project, onClose }) {
   if (!project) return null;
   const XIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
   return (
-    <div className="case-study-overlay" onClick={onClose}>
+    <motion.div
+      className="case-study-overlay"
+      ref={overlayRef}
+      onClick={onClose}
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      exit={{ opacity: 0 }}
+      transition={{ duration: 0.2 }}
+    >
       {lightboxImg && <Lightbox src={lightboxImg.src} caption={lightboxImg.caption} onClose={() => setLightboxImg(null)} />}
-      <div className="case-study-panel" onClick={e => e.stopPropagation()}>
+      <motion.div
+        className="case-study-panel"
+        onClick={e => e.stopPropagation()}
+        initial={{ opacity: 0, y: 30 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, y: 20, transition: { duration: 0.18 } }}
+        transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+      >
+        <motion.div style={{ position: "sticky", top: 0, height: 3, background: "var(--ac)", scaleX: scrollYProgress, transformOrigin: "0% 50%", zIndex: 5, borderRadius: "0 0 2px 2px", marginBottom: -3 }} />
         <button className="case-study-close" onClick={onClose}><XIcon /></button>
         <div className="case-study-header">
           <span className="project-category">{project.category}</span>
@@ -681,12 +748,12 @@ function CaseStudy({ project, onClose }) {
           })}
         </div>
         <div className="case-study-footer">
-          <a href="https://www.upwork.com/freelancers/~01ba34b0c775f1c2c8?mp_source=share" target="_blank" rel="noopener noreferrer" className="case-study-link">
+          <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="case-study-link">
             View Upwork Profile <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
         </div>
-      </div>
-    </div>
+      </motion.div>
+    </motion.div>
   );
 }
 
@@ -698,11 +765,13 @@ function WorkSection() {
         <Reveal><div className="section-header"><span className="section-tag">Verified Results</span><h2>Work</h2><p className="section-desc">Each project includes verified screenshots from the actual platform dashboards.</p></div></Reveal>
         <div className="projects-grid">{PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
         <Reveal delay={300}><div className="work-links">
-          <a href="https://www.upwork.com/freelancers/~01ba34b0c775f1c2c8?mp_source=share" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+          <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
           <a href="https://www.fiverr.com/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Fiverr Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
         </div></Reveal>
       </div>
-      {modal && <CaseStudy project={modal} onClose={() => setModal(null)} />}
+      <AnimatePresence>
+        {modal && <CaseStudy project={modal} onClose={() => setModal(null)} />}
+      </AnimatePresence>
     </section>
   );
 }
@@ -737,11 +806,28 @@ function FAQAccordion() {
         <div key={i} className={`faq-item ${open === i ? "faq-open" : ""}`}>
           <button className="faq-q" onClick={() => setOpen(open === i ? null : i)}>
             <span>{f.q}</span>
-            <div className="faq-toggle">
-              {open === i ? <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="5" y1="12" x2="19" y2="12"/></svg> : <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>}
-            </div>
+            <motion.div
+              className="faq-toggle"
+              animate={{ rotate: open === i ? 45 : 0 }}
+              transition={{ duration: 0.25, ease: "easeInOut" }}
+            >
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+            </motion.div>
           </button>
-          <div className="faq-a" style={{ maxHeight: open === i ? 300 : 0 }}><p>{f.a}</p></div>
+          <AnimatePresence initial={false}>
+            {open === i && (
+              <motion.div
+                className="faq-a"
+                key={`faq-${i}`}
+                initial={{ height: 0 }}
+                animate={{ height: "auto" }}
+                exit={{ height: 0 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
+              >
+                <p>{f.a}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       ))}
     </div>
@@ -817,8 +903,10 @@ function Footer() {
           <div className="nav-logo"><span className="logo-ads">ads</span><span className="logo-vocate">vocate</span></div>
           <p className="footer-copy">&copy; 2026 Hassan Ali · Islamabad, Pakistan</p>
           <div className="footer-links">
-            <a href="https://www.upwork.com/freelancers/~01ba34b0c775f1c2c8?mp_source=share" target="_blank" rel="noopener noreferrer">Upwork</a>
+            <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer">Upwork</a>
             <a href="https://www.fiverr.com/adsvocate" target="_blank" rel="noopener noreferrer">Fiverr</a>
+            <a href="https://www.instagram.com/ads.vocate/" target="_blank" rel="noopener noreferrer">Instagram</a>
+            <a href="https://www.facebook.com/people/Adsvocate/61588825871863/" target="_blank" rel="noopener noreferrer">Facebook</a>
             <a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp</a>
             <a href={`mailto:${HASSAN_EMAIL}`}>{HASSAN_EMAIL}</a>
           </div>
