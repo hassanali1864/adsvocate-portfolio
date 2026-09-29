@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "motion/react";
 import p1img1 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_44_45 AM.png';
 import p1img2 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_40_44 AM.png';
 import p1img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 04_36_42 AM.png';
@@ -14,7 +14,13 @@ import p4img2 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_38_46 AM.pn
 import p4img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_44_54 AM.png';
 import p4img4 from './assets/projects/ChatGPT Image Apr 25, 2026, 05_34_28 AM.png';
 import p4img5 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_08_43 AM.png';
-import hassanPhoto from './assets/hassan.jpg';
+import hassanPhoto from './assets/hassan-workspace.webp';
+import ukMeta from './assets/projects/uk-sofa-meta-purchases.png';
+import ukGtm from './assets/projects/uk-sofa-gtm.png';
+import fhcGoogle from './assets/projects/fhc-google-ads.png';
+import fhcGtm from './assets/projects/fhc-gtm.png';
+import fhcMeta from './assets/projects/fhc-meta-creatives.png';
+import academyGoogle from './assets/projects/academy-google-ads.png';
 import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
 import { Download } from 'lucide-react';
 
@@ -85,6 +91,7 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .hero-photo-col{display:flex;justify-content:center;align-items:center;position:relative}
 .hero-photo-wrapper{position:relative;transition:transform .15s ease-out}
 .hero-photo{width:250px;height:250px;border-radius:50%;border:3px solid rgba(43,140,127,.2);background:linear-gradient(145deg,var(--ac-l),#d4e8e4);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;z-index:2;overflow:hidden;animation:photoGlow 4s ease-in-out infinite}
+.hero-photo img{width:100%;height:100%;object-fit:cover;object-position:52% 43%;transform:scale(1.04)}
 @keyframes photoGlow{0%,100%{box-shadow:0 0 30px rgba(43,140,127,.12),0 0 80px rgba(43,140,127,.06)}50%{box-shadow:0 0 45px rgba(43,140,127,.18),0 0 100px rgba(43,140,127,.08)}}
 .hero-photo-ring{position:absolute;border-radius:50%;border:1px solid rgba(43,140,127,.1);top:50%;left:50%;transform:translate(-50%,-50%)}
 .ring-1{width:310px;height:310px;animation:ringPulse 3s ease-out infinite}
@@ -122,10 +129,21 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .platform-item{display:flex;flex-direction:column;align-items:center;gap:7px;padding:14px 16px;border-radius:12px;width:88px;border:1px solid;transition:all .2s;cursor:default}
 .platform-item span{font-size:.58rem;text-align:center;line-height:1.2;font-weight:500;transition:color .2s}
 .projects-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-bottom:28px}
+.work-group{margin-bottom:54px}
+.work-group-head{display:flex;align-items:end;justify-content:space-between;gap:24px;margin:0 0 20px}
+.work-group-head h3{font-size:1.45rem;line-height:1.1}
+.work-group-head p{max-width:520px;font-size:.82rem;line-height:1.6;color:var(--t2);text-align:right}
 .project-card{padding:28px;background:var(--card);border:1px solid var(--border);border-radius:var(--r);cursor:pointer;position:relative;overflow:hidden;transition:background .3s,border-color .3s,box-shadow .3s}
 .project-card-hover{border-color:rgba(43,140,127,.25);box-shadow:var(--shb)}
 .project-card-glow{position:absolute;top:0;left:20%;right:20%;height:2px;background:linear-gradient(90deg,transparent,var(--ac),transparent);transition:opacity .4s}
 .project-card-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:14px}
+.project-card-media{height:188px;margin:0 -28px 20px;position:relative;overflow:hidden;background:var(--bg-alt);border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.project-card-media img{width:100%;height:100%;object-fit:cover;object-position:var(--cover-position,center 50%);transform:scale(var(--cover-scale,1));display:block;filter:saturate(.86) contrast(1.04)}
+.project-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(26,35,50,.72))}
+.project-card-media span{position:absolute;left:16px;bottom:12px;z-index:1;color:#fff;font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.project-card-media-type{display:flex;align-items:flex-end;padding:22px;background:linear-gradient(135deg,var(--ac-l),#d3e7e2)}
+.project-card-media-type::after{display:none}
+.project-card-media-type strong{font-family:'Instrument Serif',serif;font-size:2.15rem;font-weight:400;line-height:.95;color:var(--ac);max-width:90%}
 .project-category{padding:3px 10px;background:var(--ac-l);border:1px solid rgba(43,140,127,.15);border-radius:20px;font-size:.65rem;font-weight:600;color:var(--ac);letter-spacing:.08em;text-transform:uppercase}
 .project-open-btn{width:30px;height:30px;border-radius:50%;background:var(--bg-alt);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;color:var(--t2);flex-shrink:0}
 .project-card-title{font-family:'Instrument Serif',serif;font-size:1.2rem;color:var(--text);margin-bottom:4px;line-height:1.25}
@@ -137,6 +155,7 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .project-tags{display:flex;gap:5px;flex-wrap:wrap}
 .project-tag{padding:2px 8px;background:var(--bg);border-radius:4px;font-size:.66rem;color:var(--t2);font-weight:500}
 .project-card-hint{font-size:.74rem;color:var(--t3);margin-top:12px;font-style:italic}
+.work-note{font-size:.72rem;color:var(--t3);line-height:1.6;text-align:center;max-width:720px;margin:0 auto 22px}
 .work-links{display:flex;justify-content:center;gap:12px}
 .case-study-overlay{position:fixed;inset:0;background:rgba(26,35,50,.5);z-index:200;display:flex;align-items:flex-start;justify-content:center;padding:40px 20px;overflow-y:auto;backdrop-filter:blur(4px)}
 .case-study-panel{background:var(--card);border:1px solid var(--border);border-radius:var(--r);max-width:800px;width:100%;position:relative;box-shadow:var(--shb)}
@@ -159,6 +178,9 @@ h1 em{font-style:italic;color:var(--ac);display:block;margin-top:4px}
 .case-study-link{font-size:.8rem;color:var(--ac);text-decoration:none;display:inline-flex;align-items:center;gap:5px;font-weight:500}
 .case-study-link:hover{text-decoration:underline}
 .project-image{margin:20px 0;border-radius:var(--rs);overflow:hidden}
+.project-image-frame{height:330px;overflow:hidden;border:1px solid var(--border);border-radius:var(--rs);position:relative;background:var(--bg-alt)}
+.project-image-frame img{width:100%;height:100%;object-fit:cover;object-position:var(--focus-position,center 50%);transform:scale(var(--focus-scale,1));display:block}
+.project-image-frame::after{content:"VIEW FULL SCREENSHOT";position:absolute;right:10px;bottom:10px;background:rgba(26,35,50,.86);color:#fff;border-radius:4px;padding:5px 8px;font-size:.55rem;font-weight:600;letter-spacing:.08em}
 .img-placeholder{background:var(--bg);border:1.5px dashed rgba(43,140,127,.2);border-radius:var(--rs);padding:32px 20px;text-align:center;display:flex;flex-direction:column;align-items:center;gap:8px;min-height:120px;justify-content:center;color:var(--t2);transition:all .2s;cursor:pointer}
 .img-placeholder:hover{border-color:var(--ac);background:var(--ac-l)}
 .img-placeholder span{font-size:.78rem;font-weight:500;line-height:1.4}
@@ -207,12 +229,50 @@ textarea.field{resize:vertical;min-height:90px}
 .footer-links{display:flex;gap:20px;flex-wrap:wrap}
 .footer-links a{font-size:.8rem;color:var(--t2);text-decoration:none;font-weight:500;transition:color .2s}
 .footer-links a:hover{color:var(--ac)}
+.work-intro{display:grid;grid-template-columns:minmax(0,1.15fr) minmax(280px,.65fr);align-items:end;gap:52px;margin-bottom:34px}
+.work-intro .section-tag{margin-bottom:12px}
+.work-intro h2{font-size:clamp(2.7rem,5.5vw,5rem);max-width:760px;line-height:.96}
+.work-intro-copy{border-left:2px solid var(--ac);padding-left:22px;color:var(--t2);font-size:.92rem;line-height:1.75}
+.work-intro-copy strong{display:block;color:var(--text);font-family:'Instrument Serif',serif;font-size:1.35rem;font-weight:400;line-height:1.2;margin-bottom:7px}
+.mobile-swipe-note{display:none;color:var(--ac);font-size:.7rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;margin:0 0 12px}
+.current-work-grid{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px}
+.current-card{grid-column:span 4;min-height:390px;border:1px solid var(--border);border-radius:22px;background:var(--card);overflow:hidden;display:flex;flex-direction:column;position:relative;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;text-align:left;color:inherit;font:inherit}
+.current-card:nth-child(1){grid-column:span 5}
+.current-card:nth-child(2){grid-column:span 7}
+.current-card:hover{transform:translateY(-5px);box-shadow:var(--shb);border-color:rgba(43,140,127,.25)}
+.current-card-media{height:188px;position:relative;overflow:hidden;background:var(--bg-alt);border-bottom:1px solid var(--border)}
+.current-card-media img{width:100%;height:100%;object-fit:cover;object-position:var(--card-position,50% 50%);transform:scale(var(--card-scale,1));filter:saturate(.82) contrast(1.04);transition:transform .5s ease}
+.current-card:hover .current-card-media img{transform:scale(calc(var(--card-scale,1) + .04))}
+.current-card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(26,35,50,.75))}
+.current-card-media-label{position:absolute;z-index:1;left:18px;bottom:14px;color:#fff;font-size:.64rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.current-card-type{height:188px;padding:24px;background:var(--ac-l);border-bottom:1px solid rgba(43,140,127,.14);display:flex;flex-direction:column;justify-content:space-between;overflow:hidden;position:relative}
+.current-card-type::after{content:"";position:absolute;width:190px;height:190px;border:38px solid rgba(43,140,127,.08);border-radius:50%;right:-68px;bottom:-86px}
+.current-card-type span{font-size:.66rem;color:var(--ac);font-weight:700;letter-spacing:.14em}
+.current-card-type strong{font-family:'Instrument Serif',serif;font-size:clamp(2rem,3vw,3rem);font-weight:400;line-height:.88;max-width:85%;position:relative;z-index:1}
+.current-card-body{padding:22px 22px 20px;display:flex;flex-direction:column;flex:1}
+.current-card-kicker{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:10px}
+.current-card-kicker span:first-child{font-size:.62rem;color:var(--ac);font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.current-card-kicker span:last-child{font-family:'Instrument Serif',serif;color:var(--t3);font-size:1.15rem}
+.current-card h3{font-size:1.55rem;line-height:1.05;margin-bottom:7px}
+.current-card-subtitle{font-size:.78rem;color:var(--t2);line-height:1.5;margin-bottom:16px}
+.current-card-proof{margin-top:auto;padding-top:14px;border-top:1px solid var(--border);display:grid;grid-template-columns:8px 1fr;gap:9px;align-items:start;color:var(--text);font-size:.72rem;line-height:1.45;font-weight:500}
+.current-card-proof::before{content:"";width:7px;height:7px;background:var(--ac);border-radius:50%;margin-top:3px}
+.current-card-arrow{position:absolute;right:18px;top:18px;z-index:2;width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.92);color:var(--ac);display:grid;place-items:center;border:1px solid rgba(26,35,50,.08);box-shadow:0 5px 16px rgba(26,35,50,.1)}
+.work-actions{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-top:24px;padding-top:20px;border-top:1px solid var(--border)}
+.work-actions-left,.work-actions-right{display:flex;gap:10px;flex-wrap:wrap}
+.archive-toggle{border:0;background:none;color:var(--t2);font:600 .78rem 'Outfit',sans-serif;cursor:pointer;padding:9px 0;display:inline-flex;align-items:center;gap:8px}
+.archive-toggle:hover{color:var(--ac)}
+.archive-wrap{margin-top:36px;padding-top:32px;border-top:1px solid var(--border)}
+.archive-wrap .work-group-head{margin-bottom:18px}
+.pdf-link{background:var(--text);color:#fff;border-color:var(--text)}
+.pdf-link:hover{background:var(--ac);border-color:var(--ac);color:#fff}
+.case-study-website{margin-left:16px}
 ::-webkit-scrollbar{width:6px}
 ::-webkit-scrollbar-track{background:var(--bg)}
 ::-webkit-scrollbar-thumb{background:var(--ac);border-radius:3px}
 @media(max-width:900px){
   .hero-grid{grid-template-columns:1fr;gap:40px}
-  .hero-photo-col{order:-1}
+  .hero-photo-col{order:0}
   .hero-text{max-width:100%;text-align:center}
   .hero-ctas,.hero-tags{justify-content:center}
   .hero-badge{margin:0 auto 24px}
@@ -220,6 +280,8 @@ textarea.field{resize:vertical;min-height:90px}
   .stats-grid{grid-template-columns:repeat(2,1fr);gap:20px}
   .problem-grid,.services-grid,.certs-grid{grid-template-columns:1fr}
   .projects-grid{grid-template-columns:1fr}
+  .work-group-head{display:block}
+  .work-group-head p{text-align:left;margin-top:7px}
   .contact-grid{grid-template-columns:1fr}
   .nav-links{display:none}
   .nav-hamburger{display:flex}
@@ -233,16 +295,26 @@ textarea.field{resize:vertical;min-height:90px}
   .case-study-overlay{padding:28px 16px}
   .case-study-panel{border-radius:var(--r)}
   .stat-item:not(:last-child){border-right:none}
+  .work-intro{grid-template-columns:1fr;gap:18px;margin-bottom:22px}
+  .work-intro-copy{max-width:620px}
+  .current-card:nth-child(n){grid-column:span 6}
+  .current-card{min-height:370px}
+  .work-actions{align-items:flex-start;flex-direction:column}
 }
 @media(max-width:480px){
   .container{padding:0 18px}
-  h1{font-size:1.8rem}
+  h1{font-size:2.15rem}
   h2{font-size:1.5rem}
   .section{padding:64px 0}
   .hero-photo{width:200px;height:200px}
   .ring-1{width:255px;height:255px}
   .ring-2{width:315px;height:315px}
   .project-metrics-row{gap:6px;padding:12px}
+  .project-card{padding:20px}
+  .project-card-media{height:178px;margin:0 -20px 18px}
+  .project-card-media img{transform:scale(var(--mobile-cover-scale,var(--cover-scale,1)))}
+  .project-image-frame{height:210px}
+  .project-image-frame img{transform:scale(var(--mobile-focus-scale,var(--focus-scale,1)))}
   .project-metric-val{font-size:1.2rem}
   .project-metric-label{font-size:.52rem}
   .case-study-overlay{padding:20px 10px}
@@ -255,6 +327,41 @@ textarea.field{resize:vertical;min-height:90px}
   .work-links{flex-direction:column;align-items:center}
   .cert-card{padding:18px}
   .footer-links{justify-content:center}
+  .hero{min-height:auto;padding:104px 0 62px}
+  .hero-grid{gap:34px}
+  .hero-photo-col{order:-1}
+  .hero-photo{width:176px;height:176px}
+  .ring-1{width:220px;height:220px}.ring-2{width:270px;height:270px}
+  .hero-text{text-align:left}
+  .hero-ctas{align-items:stretch}
+  .work-intro h2{font-size:2.55rem}
+  .work-intro-copy{font-size:.84rem;padding-left:16px}
+  .mobile-swipe-note{display:block}
+  .current-work-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(84vw,330px);gap:12px;overflow-x:auto;overscroll-behavior-inline:contain;scroll-snap-type:x mandatory;margin-left:-18px;margin-right:-18px;padding:0 18px 18px;scrollbar-width:none}
+  .current-work-grid::-webkit-scrollbar{display:none}
+  .current-card:nth-child(n){grid-column:auto;scroll-snap-align:start;min-height:350px;border-radius:18px}
+  .current-card-media,.current-card-type{height:158px}
+  .current-card-type strong{font-size:2rem}
+  .current-card-body{padding:18px}
+  .current-card h3{font-size:1.35rem}
+  .current-card-subtitle{font-size:.74rem;margin-bottom:13px}
+  .current-card-proof{font-size:.68rem}
+  .work-actions{margin-top:10px;padding-top:18px}
+  .work-actions-left,.work-actions-right{width:100%}
+  .work-actions .btn-outline,.archive-toggle{width:100%;justify-content:center}
+  .archive-wrap{margin-top:28px;padding-top:24px}
+  .archive-wrap .projects-grid{display:grid;grid-auto-flow:column;grid-auto-columns:min(84vw,330px);grid-template-columns:none;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-18px;margin-right:-18px;padding:0 18px 18px;scrollbar-width:none}
+  .archive-wrap .project-card{scroll-snap-align:start;min-height:0}
+  .project-image-frame{height:220px}
+  .case-study-website{display:block;margin:10px 0 0}
+  .services-grid,.certs-grid{display:grid;grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:min(82vw,320px);gap:12px;overflow-x:auto;scroll-snap-type:x mandatory;margin-left:-18px;margin-right:-18px;padding:0 18px 18px;scrollbar-width:none}
+  .services-grid::-webkit-scrollbar,.certs-grid::-webkit-scrollbar{display:none}
+  .service-card,.cert-card{scroll-snap-align:start;min-height:250px}
+  .service-card{display:flex;flex-direction:column;padding:24px}
+  .service-card .service-highlight{margin-top:auto;padding-top:16px}
+  .case-study-metrics{grid-template-columns:repeat(3,minmax(116px,1fr));overflow-x:auto;scroll-snap-type:x mandatory}
+  .case-study-metric{scroll-snap-align:start;padding:14px 10px}
+  .case-study-metric-val{font-size:1.25rem}
 }
 @media(prefers-reduced-motion:reduce){
   *,*::before,*::after{animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}
@@ -270,6 +377,7 @@ textarea.field{resize:vertical;min-height:90px}
 // ─────────────────────────────────────────────
 const WA_LINK = "https://wa.me/923416495097?text=Hi%20Hassan%2C%20I%20found%20your%20portfolio%20and%20want%20a%20free%20audit";
 const HASSAN_EMAIL = "adswithhsn@gmail.com";
+const CREATIVE_PORTFOLIO_URL = "https://canva.link/7nk714c5z9ldr9c";
 const EMAILJS = { service_id: "service_o8fxyps", template_id: "template_dxjxyq6", user_id: "G20yo67xYtSHdRcHR" };
 
 const PLATFORMS = [
@@ -284,6 +392,8 @@ const PLATFORMS = [
   { name: "YouTube", slug: "youtube", color: "#FF0000" },
   { name: "Instagram", slug: "instagram", color: "#E1306C" },
   { name: "Facebook", slug: "facebook", color: "#1877F2" },
+  { name: "Amazon", slug: "amazon", color: "#FF9900" },
+  { name: "eBay", slug: "ebay", color: "#E53238" },
 ];
 
 const CERTS = [
@@ -294,7 +404,7 @@ const CERTS = [
 
 const FAQS = [
   { q: "What platforms and tools do you work with?", a: "Google Ads (Search, Shopping, Performance Max, Display, YouTube), Meta Ads (Facebook and Instagram), Google Tag Manager, GA4, Shopify, WordPress and WooCommerce. For campaign management and reporting: Looker Studio, Google Merchant Center, Meta Commerce Manager, and Meta Business Manager." },
-  { q: "Is conversion tracking included in every package?", a: "Yes. No campaign runs without verified tracking. You see GTM Preview showing Succeeded, GA4 Realtime confirming events, Google Ads conversion status Active, and Meta Events Manager showing the Browser + Server + Deduplicated badge — before I mark any work complete." },
+  { q: "How do you approach measurement?", a: "The measurement plan follows the real business outcome. I verify the relevant events in GTM, GA4 and the ad platforms, document what is platform-reported, and avoid presenting a click or event as a sale when it has not been reconciled." },
   { q: "Do you work with custom-built or headless websites?", a: "Yes. For custom or headless sites, I provide complete GTM installation specifications and a dataLayer implementation brief for your developer. Once the GTM snippet is installed and the dataLayer is pushing events correctly, I configure everything from inside GTM — same result as any other platform." },
   { q: "Can you work with accounts that have never run ads?", a: "Absolutely. I build the correct foundation from scratch — account structure, conversion tracking, campaign architecture, bid strategy progression — so Smart Bidding has real data from day one instead of spending budget blind." },
   { q: "Do you guarantee specific ROAS numbers?", a: "No. Anyone who guarantees 5x ROAS before auditing your site, your margin, and your funnel is not being honest with you. I guarantee correctly structured campaigns, verified tracking, transparent reporting, and clear communication on everything I do." },
@@ -308,9 +418,9 @@ const PROBLEMS = [
 ];
 
 const SERVICES = [
-  { title: "Google Ads", desc: "Search, Shopping, Performance Max, Display and YouTube. Keyword research, negative keywords, RSAs, bid strategy progression from Maximize Clicks to Target ROAS. Smart Bidding only works with real conversion data.", highlight: "Smart Bidding optimized from day one." },
-  { title: "Meta Ads", desc: "Facebook and Instagram Sales and Lead Generation. Advantage+ audience, manual targeting, creative testing, full-funnel management. Cold prospecting and warm retargeting structured separately.", highlight: "CAPI verified. EMQ 8.0 on every setup." },
-  { title: "Conversion Tracking", desc: "GTM setup, GA4 ecommerce with dynamic values, Google Ads Enhanced Conversions for Web and Leads, Meta Pixel with Conversion API. Deduplication verified. Shopify, WordPress, WooCommerce, custom sites.", highlight: "Browser + Server + Deduplicated — always." },
+  { title: "Google Ads", desc: "Search, Shopping and the formats justified by the buying journey — structured around intent, economics and reliable conversion actions.", highlight: "Demand capture with commercial controls." },
+  { title: "Meta Ads", desc: "Creative testing, prospecting and retargeting built around the offer and the customer decision—not disconnected audience tricks.", highlight: "Creative, audience and landing page aligned." },
+  { title: "Websites + Measurement", desc: "WordPress, Next.js, CRO, GTM, GA4 and platform tracking connected to the actions the business actually values.", highlight: "The click and the outcome stay connected." },
 ];
 
 const PROJECTS = [
@@ -381,6 +491,130 @@ const PROJECTS = [
   },
 ];
 
+const CURRENT_WORK = [
+  {
+    id: "first-healthcare-uk",
+    number: "01",
+    title: "First Healthcare Limited",
+    subtitle: "Business development and digital operations",
+    role: "Current responsibility — supplier onboarding, opportunity development and digital growth planning",
+    category: "UK Healthcare",
+    tags: ["Business Development", "Supplier Onboarding", "Digital Operations"],
+    proof: "An active operating role, not a past campaign screenshot.",
+    accent: "type",
+    metrics: [
+      { label: "Status", value: "Ongoing" },
+      { label: "Market", value: "United Kingdom" },
+      { label: "Scope", value: "Growth + operations" },
+    ],
+    content: [
+      { type: "text", heading: "The responsibility", body: "I support the commercial and digital side of First Healthcare Limited: developing opportunities, helping organise supplier-facing work and shaping how the business presents and grows its services." },
+      { type: "text", heading: "What this demonstrates", body: "This work goes beyond campaign setup. It requires commercial judgment, clear communication, operational follow-through and the ability to turn a broad growth objective into practical next actions." },
+      { type: "text", heading: "Current boundary", body: "This is an ongoing responsibility. The portfolio describes the role and workstream without presenting private operational information or unfinished initiatives as completed results." },
+    ],
+  },
+  {
+    id: "uk-sofa-shop",
+    number: "02",
+    title: "UK Sofa Shop",
+    subtitle: "Ecommerce website, paid media and purchase measurement",
+    role: "Website contributor and acquisition operator — Meta, Google Ads, GTM and ecommerce journey",
+    category: "UK Ecommerce",
+    tags: ["Meta Ads", "Google Ads", "GTM", "Next.js", "Supabase"],
+    proof: "18 Meta-reported purchases in the supplied account view.",
+    media: ukMeta,
+    mediaLabel: "Meta Ads · purchase campaign",
+    coverPosition: "52% 41%",
+    coverScale: 1.18,
+    url: "https://www.uksofashop.co.uk/",
+    metrics: [
+      { label: "Meta result", value: "18 purchases" },
+      { label: "Website role", value: "≈50% contribution" },
+      { label: "Measurement", value: "GA4 + GTM" },
+    ],
+    content: [
+      { type: "text", heading: "The system", body: "UK Sofa Shop combines an ecommerce website, product-led paid acquisition and a measurement layer designed to connect product discovery with checkout behaviour." },
+      { type: "text", heading: "My contribution", body: "I contributed substantially to the website build and worked across Google Ads, Meta Ads and GTM. The objective was one operating system: traffic, product experience and purchase measurement supporting the same commercial journey." },
+      { type: "img", src: ukMeta, caption: "Supplied Meta Ads view showing 18 platform-reported website purchases. This is platform attribution, not a claim of independently reconciled fulfilled orders.", focusPosition: "53% 39%", focusScale: 1.18 },
+      { type: "img", src: ukGtm, caption: "Google Tag Manager implementation covering ecommerce and contact events.", focusPosition: "52% 45%", focusScale: 1.1 },
+    ],
+  },
+  {
+    id: "first-health-care-pakistan",
+    number: "03",
+    title: "First Health Care Pakistan",
+    subtitle: "A coordinated website, ads and lead-measurement system",
+    role: "Growth and implementation — website/CRO, Google Ads, Meta, GA4 and GTM",
+    category: "Healthcare Growth",
+    tags: ["WordPress", "Google Ads", "Meta Ads", "GA4", "GTM"],
+    proof: "19 Google Ads-reported conversions in the supplied account view.",
+    media: fhcGoogle,
+    mediaLabel: "Google Ads · service demand",
+    coverPosition: "50% 30%",
+    coverScale: 1.22,
+    url: "https://firsthealthcare.pk/",
+    metrics: [
+      { label: "Service routes", value: "8" },
+      { label: "Ads view", value: "19 conversions" },
+      { label: "Stack", value: "WP + GA4 + GTM" },
+    ],
+    content: [
+      { type: "text", heading: "The business problem", body: "Several healthcare services needed to be understandable without forcing families through a generic page. The website now routes people by care requirement while keeping privacy and availability boundaries visible." },
+      { type: "text", heading: "What I built", body: "I worked across the WordPress experience, service positioning, Google and Meta campaigns, lead paths and the measurement architecture connecting forms, calls and WhatsApp interactions." },
+      { type: "img", src: fhcGoogle, caption: "Supplied Google Ads account view. Reported conversions are shown as platform results and are not presented as paid-patient revenue.", focusPosition: "50% 31%", focusScale: 1.22 },
+      { type: "img", src: fhcGtm, caption: "GTM implementation covering lead, phone and WhatsApp actions.", focusPosition: "50% 45%", focusScale: 1.08 },
+      { type: "img", src: fhcMeta, caption: "Meta creative and landing-page engagement implementation.", focusPosition: "51% 45%", focusScale: 1.12 },
+    ],
+  },
+  {
+    id: "al-sadiq-academy",
+    number: "04",
+    title: "Al Sadiq Global Quran Academy",
+    subtitle: "An offer-led trial journey for live 1-to-1 learning",
+    role: "Growth system — website/CRO, trial journey, Search structure and measurement",
+    category: "Online Education",
+    tags: ["WordPress", "Google Ads", "CRO", "Offer Strategy"],
+    proof: "Free-trial journey, course routes and Search structure built as one path.",
+    media: academyGoogle,
+    mediaLabel: "Google Ads · Quran classes",
+    coverPosition: "49% 32%",
+    coverScale: 1.24,
+    url: "https://alsadiqglobalquranacademy.co.uk/",
+    metrics: [
+      { label: "Primary journey", value: "Free 30-min trial" },
+      { label: "Learning model", value: "Live 1-to-1" },
+      { label: "Market", value: "UK + worldwide" },
+    ],
+    content: [
+      { type: "text", heading: "The journey", body: "The website leads with the actual experience: live 1-to-1 guidance, flexible scheduling and a free 30-minute trial. Courses remain available for deeper exploration, but the first decision is intentionally simple." },
+      { type: "text", heading: "The acquisition work", body: "I worked on the relationship between Search intent, landing-page relevance, the introductory offer and the measurement needed to understand which enquiries become real trial and enrolment activity." },
+      { type: "img", src: academyGoogle, caption: "Supplied Google Ads view for the Academy Search campaign. The screenshot documents account activity; it does not imply enrolments that were not reconciled.", focusPosition: "49% 32%", focusScale: 1.24 },
+    ],
+  },
+  {
+    id: "vistamax",
+    number: "05",
+    title: "VistaMax Consultants",
+    subtitle: "A code-first application desk with a real enquiry backend",
+    role: "Website and system build — UX, copy, Next.js migration and Supabase enquiry flow",
+    category: "Consulting Platform",
+    tags: ["Next.js", "Supabase", "Vercel", "Conversion UX"],
+    proof: "Three clear routes: education, jobs, and professional documents.",
+    accent: "type",
+    url: "https://vistamaxconsultants.com/",
+    metrics: [
+      { label: "Core routes", value: "3" },
+      { label: "Frontend", value: "Next.js" },
+      { label: "Backend", value: "Supabase" },
+    ],
+    content: [
+      { type: "text", heading: "The design system", body: "VistaMax uses a route-first experience: large editorial typography, numbered service cards and a compact mobile selector that lets visitors choose their path before reading the detail." },
+      { type: "text", heading: "The build", body: "The approved WordPress experience was migrated into a code-first Next.js application while retaining its content, visual language and public routes. Supabase supports the enquiry flow and Vercel supports deployment." },
+      { type: "text", heading: "Why it matters here", body: "This project demonstrates that I can work beyond an ad dashboard: positioning, copy, responsive UX, frontend implementation, backend connection and measurement can be treated as one conversion system." },
+    ],
+  },
+];
+
 // ─────────────────────────────────────────────
 // HOOKS & HELPERS
 // ─────────────────────────────────────────────
@@ -445,12 +679,14 @@ function Reveal({ children, delay = 0, className = "" }) {
   );
 }
 
-function ProjectImage({ src, caption, onClick }) {
+function ProjectImage({ src, caption, onClick, focusPosition = "50% 50%", focusScale = 1 }) {
   const [failed, setFailed] = useState(false);
   return (
     <div className="project-image" onClick={onClick} style={{ cursor: "pointer" }}>
       {!failed ? (
-        <img src={src} alt={caption} onError={() => setFailed(true)} style={{ width: "100%", borderRadius: "var(--rs)", display: "block" }} />
+        <div className="project-image-frame" style={{ "--focus-position": focusPosition, "--focus-scale": focusScale }}>
+          <img src={src} alt={caption} onError={() => setFailed(true)} />
+        </div>
       ) : (
         <div className="img-placeholder">
           <svg width="28" height="28" viewBox="0 0 32 32" fill="none" style={{ opacity: .35 }}>
@@ -521,11 +757,11 @@ function Hero() {
         <div className="hero-grid">
           <div className="hero-text">
             <div className="hero-badge fade-up d1"><span className="pulse-dot"></span>Available for new projects</div>
-            <h1 className="fade-up d2">Your Ads Are Spending. <em>Your Tracking Is Lying.</em></h1>
-            <p className="hero-desc fade-up d3">I'm Hassan Ali — performance marketing specialist based in Islamabad. I fix conversion tracking and run high-performance Google and Meta campaigns so your algorithms always have the data they need.</p>
+            <h1 className="fade-up d2">Paid media should create business. <em>Not just dashboard activity.</em></h1>
+            <p className="hero-desc fade-up d3">I'm Hassan Ali. I connect Google Ads, Meta, conversion-focused websites and reliable measurement so the campaign, the customer journey and the business outcome tell the same story.</p>
 
             <div className="hero-ctas fade-up d4">
-              <button className="btn-primary" onClick={() => navScrollTo("contact")}>Book a Free Audit <Arr /></button>
+              <button className="btn-primary" onClick={() => navScrollTo("contact")}>Discuss a Project <Arr /></button>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp Me</a>
             </div>
             <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="hero-dl-link fade-up d5"><Download size={13} />Download Resume</a>
@@ -547,11 +783,11 @@ function Hero() {
               <div className="hero-photo-ring ring-1"></div>
               <div className="hero-photo-ring ring-2"></div>
               <div className="hero-photo">
-                <img src={hassanPhoto} alt="Hassan Ali" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 28%"}} />
+                <img src={hassanPhoto} alt="Hassan Ali" />
               </div>
             </div>
-            <div className="hero-float-chip chip-right"><strong>52%</strong><span>MoM Growth</span></div>
-            <div className="hero-float-chip chip-left"><strong>$20k+</strong><span>Revenue Tracked</span></div>
+            <div className="hero-float-chip chip-right"><strong>Google + Meta</strong><span>Paid acquisition</span></div>
+            <div className="hero-float-chip chip-left"><strong>Web + Data</strong><span>CRO and measurement</span></div>
           </motion.div>
         </div>
       </div>
@@ -560,10 +796,14 @@ function Hero() {
 }
 
 function StatsStrip() {
-  const [ref, inView] = useReveal(0.2);
-  const stats = [{ n: 135, d: "135", l: "Leads Generated" }, { n: 8.54, d: "$8.54", l: "Avg Cost Per Lead" }, { n: 3240, d: "3,240", l: "Clicks Delivered" }, { n: 8.0, d: "8.0/10", l: "Event Match Quality" }];
+  const stats = [
+    { d: "SEARCH", l: "Capture existing intent" },
+    { d: "META", l: "Create and recover demand" },
+    { d: "MEASUREMENT", l: "Connect clicks to outcomes" },
+    { d: "WEBSITES", l: "Turn intent into action" },
+  ];
   return (
-    <section className="stats-strip" ref={ref} aria-label="Key results">
+    <section className="stats-strip" aria-label="Core capabilities">
       <div className="container">
         <motion.div
           className="stats-grid"
@@ -581,7 +821,7 @@ function StatsStrip() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
               }}
             >
-              <div className="stat-value"><StatCount raw={s.n} display={s.d} started={inView} /></div>
+              <div className="stat-value">{s.d}</div>
               <div className="stat-label">{s.l}</div>
             </motion.div>
           ))}
@@ -628,7 +868,7 @@ function ServicesSection() {
   return (
     <section id="services" className="section section-alt">
       <div className="container">
-        <Reveal><div className="section-header"><span className="section-tag">What I Do</span><h2>Services</h2></div></Reveal>
+        <Reveal><div className="section-header"><span className="section-tag">Where I Take Ownership</span><h2>Acquisition, experience and evidence.</h2><p className="section-desc">The channel is only useful when the offer, website and measurement can support it.</p></div></Reveal>
         <div className="services-grid">
           {SERVICES.map((s, i) => (
             <Reveal key={i} delay={i * 100}>
@@ -681,6 +921,33 @@ function ProjectCard({ project, onOpen, index }) {
         <p className="project-card-hint">View full case study</p>
       </div>
     </Reveal>
+  );
+}
+
+function CurrentProjectCard({ project, onOpen }) {
+  return (
+    <button className="current-card" onClick={() => onOpen(project)} aria-label={`Open ${project.title} case study`}>
+      <span className="current-card-arrow" aria-hidden="true">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
+      </span>
+      {project.media ? (
+        <div className="current-card-media" style={{ "--card-position": project.coverPosition, "--card-scale": project.coverScale }}>
+          <img src={project.media} alt="" />
+          <span className="current-card-media-label">{project.mediaLabel}</span>
+        </div>
+      ) : (
+        <div className="current-card-type">
+          <span>{project.number} / CURRENT WORK</span>
+          <strong>{project.title}</strong>
+        </div>
+      )}
+      <div className="current-card-body">
+        <div className="current-card-kicker"><span>{project.category}</span><span>{project.number}</span></div>
+        <h3>{project.title}</h3>
+        <p className="current-card-subtitle">{project.subtitle}</p>
+        <p className="current-card-proof">{project.proof}</p>
+      </div>
+    </button>
   );
 }
 
@@ -743,7 +1010,7 @@ function CaseStudy({ project, onClose }) {
         <div className="case-study-body">
           {project.content.map((block, i) => {
             if (block.type === "text") return <div key={i} className="cs-text-block"><h4>{block.heading}</h4><p>{block.body}</p></div>;
-            if (block.type === "img") return <ProjectImage key={i} src={block.src} caption={block.caption} onClick={() => setLightboxImg({ src: block.src, caption: block.caption })} />;
+            if (block.type === "img") return <ProjectImage key={i} {...block} onClick={() => setLightboxImg({ src: block.src, caption: block.caption })} />;
             return null;
           })}
         </div>
@@ -751,6 +1018,7 @@ function CaseStudy({ project, onClose }) {
           <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="case-study-link">
             View Upwork Profile <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
+          {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="case-study-link case-study-website">Visit live website <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>}
         </div>
       </motion.div>
     </motion.div>
@@ -759,15 +1027,31 @@ function CaseStudy({ project, onClose }) {
 
 function WorkSection() {
   const [modal, setModal] = useState(null);
+  const [showArchive, setShowArchive] = useState(false);
   return (
     <section id="work" className="section">
       <div className="container">
-        <Reveal><div className="section-header"><span className="section-tag">Verified Results</span><h2>Work</h2><p className="section-desc">Each project includes verified screenshots from the actual platform dashboards.</p></div></Reveal>
-        <div className="projects-grid">{PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
-        <Reveal delay={300}><div className="work-links">
-          <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
-          <a href="https://www.fiverr.com/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Fiverr Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+        <Reveal><div className="work-intro">
+          <div><span className="section-tag">Selected Systems</span><h2>Campaigns are one part of the work.</h2></div>
+          <p className="work-intro-copy"><strong>I work across the whole path.</strong>Offer and positioning. Website and CRO. Google and Meta. Tracking, attribution and the operating decisions that follow.</p>
         </div></Reveal>
+        <p className="mobile-swipe-note">Swipe to browse current work →</p>
+        <div className="current-work-grid">{CURRENT_WORK.map(p => <CurrentProjectCard key={p.id} project={p} onOpen={setModal} />)}</div>
+        <div className="work-actions">
+          <div className="work-actions-left">
+            <a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm pdf-link">Creative Portfolio PDF <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile</a>
+          </div>
+          <div className="work-actions-right">
+            <button className="archive-toggle" onClick={() => setShowArchive(v => !v)}>{showArchive ? "Hide earlier case studies ↑" : "Open earlier technical case studies ↓"}</button>
+          </div>
+        </div>
+        <AnimatePresence initial={false}>
+          {showArchive && <motion.div className="archive-wrap" initial={{ opacity: 0, height: 0 }} animate={{ opacity: 1, height: "auto" }} exit={{ opacity: 0, height: 0 }}>
+            <div className="work-group-head"><h3>Earlier technical case studies</h3><p>Detailed implementation examples remain available without forcing every mobile visitor through them.</p></div>
+            <div className="projects-grid">{PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
+          </motion.div>}
+        </AnimatePresence>
       </div>
       <AnimatePresence>
         {modal && <CaseStudy project={modal} onClose={() => setModal(null)} />}
@@ -850,7 +1134,7 @@ function ContactSection() {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <Reveal><div className="section-header"><span className="section-tag">Get Started</span><h2>Book a Free Audit Call</h2><p className="section-desc">I'll review your current setup and tell you exactly what I see and what I'd fix — within 24 hours, no obligation.</p></div></Reveal>
+        <Reveal><div className="section-header"><span className="section-tag">Start a Conversation</span><h2>Bring me the business problem.</h2><p className="section-desc">Tell me what needs to improve, what is already in place and where the current system is losing momentum.</p></div></Reveal>
         <div className="contact-grid">
           <Reveal delay={100}>
             <div className="contact-col">
@@ -926,9 +1210,8 @@ export default function App() {
       <Nav />
       <Hero />
       <StatsStrip />
-      <ProblemSection />
-      <ServicesSection />
       <WorkSection />
+      <ServicesSection />
       <CertsSection />
       <ContactSection />
       <Footer />
