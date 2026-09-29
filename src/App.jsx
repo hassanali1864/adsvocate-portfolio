@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useScroll, useTransform } from "framer-motion";
+import { motion, AnimatePresence, useScroll } from "motion/react";
 import p1img1 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_44_45 AM.png';
 import p1img2 from './assets/projects/ChatGPT Image Apr 25, 2026, 03_40_44 AM.png';
 import p1img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 04_36_42 AM.png';
@@ -14,9 +14,15 @@ import p4img2 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_38_46 AM.pn
 import p4img3 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_44_54 AM.png';
 import p4img4 from './assets/projects/ChatGPT Image Apr 25, 2026, 05_34_28 AM.png';
 import p4img5 from './assets/projects/ChatGPT Image Apr 25, 2026, 06_08_43 AM.png';
+import ukMeta from './assets/projects/uk-sofa-meta-purchases.png';
+import ukGtm from './assets/projects/uk-sofa-gtm.png';
+import fhcGoogle from './assets/projects/fhc-google-ads.png';
+import fhcGtm from './assets/projects/fhc-gtm.png';
+import fhcMeta from './assets/projects/fhc-meta-creatives.png';
+import academyGoogle from './assets/projects/academy-google-ads.png';
 import hassanPhoto from './assets/hassan.jpg';
 import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
-import { Download } from 'lucide-react';
+import { Download, ArrowUpRight, X } from 'lucide-react';
 
 // ─────────────────────────────────────────────
 // STYLES  (injected at runtime — copy to App.css
@@ -263,12 +269,92 @@ textarea.field{resize:vertical;min-height:90px}
   .fade-up,.fade-in-photo{animation:none;opacity:1;transform:none}
   .pulse-dot,.hero-photo-ring,.hero-float-chip,.hero-photo{animation:none}
 }
+/* Editorial portfolio refresh: bold hierarchy, real evidence and fewer decorative effects. */
+:root{--bg:#F2F0EA;--bg-alt:#E8E9E6;--card:#fff;--text:#151C2B;--t2:#526071;--t3:#697589;--ac:#2857D9;--ac-h:#1746CA;--ac-l:#E4EAFF;--border:rgba(21,28,43,.12);--r:10px;--rs:7px}
+body{background:var(--bg)}
+h1,h2,h3,h4{font-family:'Outfit',sans-serif}
+h2{font-size:clamp(2.3rem,4vw,4.3rem);font-weight:700;letter-spacing:-.055em}
+.section{padding:104px 0}
+.section-header{text-align:left;max-width:850px;margin-bottom:42px}
+.section-desc{margin:16px 0 0;max-width:670px;font-size:1rem}
+.section-tag{letter-spacing:.2em;font-size:.68rem}
+.nav-scrolled{background:rgba(242,240,234,.96)}
+.logo-ads,.logo-vocate{font-family:'Outfit',sans-serif;font-weight:800;font-style:normal;letter-spacing:-.08em;-webkit-text-stroke:0}
+.logo-vocate{color:var(--ac)}
+.btn-primary,.btn-outline{border-radius:4px;text-transform:uppercase;letter-spacing:.07em;font-size:.75rem}
+.hero{background:#151C2B;min-height:720px;padding:135px 0 85px;color:#F4F2EC}
+.hero-glow,.hero-photo-ring,.page-grid{display:none}
+.hero-grid{grid-template-columns:1.08fr .92fr;gap:5vw}
+.hero-text{max-width:740px}
+.hero-badge{border-radius:3px;background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.16);color:#C9D8FF;text-transform:uppercase;letter-spacing:.12em;font-size:.64rem}
+.hero h1{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(3.2rem,5.5vw,6.4rem);line-height:.98;letter-spacing:-.07em;color:#fff;margin-bottom:30px}
+.hero h1 em{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;color:#A7BEFF;line-height:1;letter-spacing:-.02em}
+.hero-desc{font-size:1.08rem;color:#D2D9E6;max-width:570px;line-height:1.55}
+.hero-sub,.hero-dl-link{color:#B7C1D1}
+.hero-tag{border-radius:2px;background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.18);color:#CBD5E2}
+.hero .btn-primary{background:#A7BEFF;color:#151C2B}
+.hero .btn-primary:hover{background:#fff}
+.hero .btn-outline{color:#fff;border-color:rgba(255,255,255,.45)}
+.hero .btn-outline:hover{background:rgba(255,255,255,.12)}
+.hero-photo-col{align-items:flex-end;min-height:490px}
+.hero-photo-wrapper{width:min(100%,440px);height:500px}
+.hero-photo{width:100%;height:100%;border:0;border-radius:3px;background:#343A44;box-shadow:none;animation:none}
+.hero-photo img{filter:grayscale(1) contrast(1.1);object-position:center 20%!important}
+.hero-float-chip{border-radius:2px;background:#A7BEFF;border:0;animation:none;box-shadow:none;padding:13px 16px}
+.hero-float-chip strong{font-family:'Outfit',sans-serif;font-weight:800;color:#151C2B;font-size:1rem}
+.hero-float-chip span{color:#26354C;font-size:.62rem;text-transform:uppercase;letter-spacing:.08em}
+.chip-right{right:-3%;top:4%}.chip-left{left:-6%;bottom:8%}
+.stats-strip{background:#2857D9;border:0;color:#fff;padding:26px 0}
+.stat-value{font-family:'Outfit',sans-serif;font-size:1.55rem;font-weight:800;color:#BFD0FF}
+.stat-label{font-size:.75rem;color:#fff;text-transform:uppercase;letter-spacing:.08em}
+.stat-item:not(:last-child){border-right-color:rgba(255,255,255,.22)}
+.problem-card,.service-card{border-radius:4px;box-shadow:none}
+.problem-num,.service-num{font-family:'Outfit',sans-serif;font-weight:800;color:var(--ac)}
+.service-card h3{font-family:'Outfit',sans-serif;font-weight:700;font-size:1.25rem}
+.platform-item{border-radius:3px}
+.projects-grid{gap:22px;align-items:stretch}
+.projects-grid>div{min-width:0}
+.project-card{border-radius:4px;padding:26px;min-height:100%;box-shadow:none}
+.project-card-featured{border:1px solid #C8CFD9;box-shadow:0 8px 0 rgba(21,28,43,.04)}
+.project-card-archive{min-height:265px;background:#EDECE7}
+.project-card-title{font-family:'Outfit',sans-serif;font-weight:800;font-size:clamp(1.5rem,2vw,2.05rem);letter-spacing:-.045em;line-height:1.08;margin:18px 0 10px}
+.project-card-subtitle{color:var(--t2);font-size:.92rem;min-height:42px;margin-bottom:14px}
+.project-category{border-radius:2px;letter-spacing:.12em;font-size:.6rem}
+.project-cover{height:208px;position:relative;overflow:hidden;background:#DCE3F2;margin:8px -26px 0;border-top:1px solid var(--border);border-bottom:1px solid var(--border)}
+.project-cover img{width:100%;height:100%;object-fit:cover;object-position:center 42%;transform:scale(1.7);filter:saturate(.65) contrast(1.08)}
+.project-cover>span:last-child{position:absolute;bottom:0;left:0;right:0;background:rgba(21,28,43,.92);color:#fff;font-size:.6rem;letter-spacing:.15em;font-weight:700;padding:9px 14px}
+.project-cover-type{background:linear-gradient(135deg,#172135,#2D4368);display:flex;flex-direction:column;justify-content:center;align-items:flex-start;padding:24px}
+.project-cover-type>span:first-child{position:static;background:none;color:#fff;padding:0;font-family:'Outfit',sans-serif;font-size:clamp(2rem,4vw,3.1rem);letter-spacing:-.06em;font-weight:800}
+.project-cover-type small{color:#BFD0FF;text-transform:uppercase;letter-spacing:.15em;font-size:.62rem}
+.project-metrics-row{background:#EEF1F6;border-radius:2px;gap:0}
+.project-metric:not(:last-child){border-right:1px solid #D8DEE8}
+.project-metric-val{font-family:'Outfit',sans-serif;font-size:1.05rem;font-weight:800;line-height:1.25;overflow-wrap:anywhere}
+.project-metric-label{font-size:.58rem;color:#526071;line-height:1.2}
+.project-card-hint{font-style:normal;color:var(--ac);text-transform:uppercase;letter-spacing:.08em;font-weight:700;font-size:.65rem}
+.archive-start{grid-column:1/-1}
+.archive-heading{padding:34px 0 8px;border-top:2px solid var(--text);display:flex;align-items:baseline;gap:20px}
+.archive-heading span{font-size:1.6rem;font-weight:800;letter-spacing:-.04em}
+.archive-heading small{color:var(--t2);font-size:.78rem}
+.archive-start .project-card{min-height:240px}
+.case-study-overlay{background:rgba(9,15,27,.78)}
+.case-study-panel{border-radius:4px;max-width:920px}
+.case-study-header h2{font-family:'Outfit',sans-serif;font-size:2.6rem;font-weight:800;letter-spacing:-.06em}
+.case-study-metric-val{font-family:'Outfit',sans-serif;font-weight:800;font-size:1.4rem}
+.case-study-metric{border-radius:2px}
+.project-image{border:1px solid var(--border);background:#F0F2F5}
+.project-image img{width:100%;aspect-ratio:2.2/1;object-fit:cover;object-position:center 36%;border-radius:0!important}
+.img-caption{margin:0;padding:10px 14px;text-align:left;font-style:normal;font-size:.74rem;color:#4C596C;background:#F0F2F5}
+@media(max-width:900px){.hero{min-height:0}.hero-photo-col{order:0;min-height:0}.hero-photo-wrapper{height:370px;max-width:360px}.hero-text{text-align:left}.hero-badge{margin:0 0 24px}.hero-ctas,.hero-tags{justify-content:flex-start}.hero h1 em{display:block}.projects-grid{grid-template-columns:1fr}.archive-start{grid-column:auto}}
+@media(max-width:600px){.hero{padding:112px 0 64px}.hero h1{font-size:clamp(2.8rem,13vw,4.5rem)}.hero-photo-wrapper{height:320px;max-width:100%}.stats-grid{grid-template-columns:1fr 1fr}.stat-item{text-align:left}.project-cover{height:165px}.archive-heading{display:block}.archive-heading small{display:block;margin-top:8px}.case-study-header h2{font-size:2rem}}
 `;
 
 // ─────────────────────────────────────────────
 // CONSTANTS
 // ─────────────────────────────────────────────
 const WA_LINK = "https://wa.me/923416495097?text=Hi%20Hassan%2C%20I%20found%20your%20portfolio%20and%20want%20a%20free%20audit";
+// Insert the final content/graphics PDF URL here when Hassan supplies it.
+// Only one creative-portfolio link is rendered; research PDFs/Drive folders are excluded.
+const CREATIVE_PORTFOLIO_PDF_URL = '';
 const HASSAN_EMAIL = "adswithhsn@gmail.com";
 const EMAILJS = { service_id: "service_o8fxyps", template_id: "template_dxjxyq6", user_id: "G20yo67xYtSHdRcHR" };
 
@@ -284,6 +370,10 @@ const PLATFORMS = [
   { name: "YouTube", slug: "youtube", color: "#FF0000" },
   { name: "Instagram", slug: "instagram", color: "#E1306C" },
   { name: "Facebook", slug: "facebook", color: "#1877F2" },
+  { name: "Vercel", slug: "vercel", color: "#111827" },
+  { name: "Supabase", slug: "supabase", color: "#3ECF8E" },
+  { name: "Amazon", slug: "amazon", color: "#FF9900" },
+  { name: "eBay", slug: "ebay", color: "#E53238" },
 ];
 
 const CERTS = [
@@ -294,26 +384,26 @@ const CERTS = [
 
 const FAQS = [
   { q: "What platforms and tools do you work with?", a: "Google Ads (Search, Shopping, Performance Max, Display, YouTube), Meta Ads (Facebook and Instagram), Google Tag Manager, GA4, Shopify, WordPress and WooCommerce. For campaign management and reporting: Looker Studio, Google Merchant Center, Meta Commerce Manager, and Meta Business Manager." },
-  { q: "Is conversion tracking included in every package?", a: "Yes. No campaign runs without verified tracking. You see GTM Preview showing Succeeded, GA4 Realtime confirming events, Google Ads conversion status Active, and Meta Events Manager showing the Browser + Server + Deduplicated badge — before I mark any work complete." },
+  { q: "Is conversion tracking included in every package?", a: "The measurement scope is agreed before launch. I check the events needed for the commercial goal, validate what the platforms receive, and explain what still requires first-party reconciliation. A tag listed in GTM is not by itself proof of a completed customer outcome." },
   { q: "Do you work with custom-built or headless websites?", a: "Yes. For custom or headless sites, I provide complete GTM installation specifications and a dataLayer implementation brief for your developer. Once the GTM snippet is installed and the dataLayer is pushing events correctly, I configure everything from inside GTM — same result as any other platform." },
-  { q: "Can you work with accounts that have never run ads?", a: "Absolutely. I build the correct foundation from scratch — account structure, conversion tracking, campaign architecture, bid strategy progression — so Smart Bidding has real data from day one instead of spending budget blind." },
-  { q: "Do you guarantee specific ROAS numbers?", a: "No. Anyone who guarantees 5x ROAS before auditing your site, your margin, and your funnel is not being honest with you. I guarantee correctly structured campaigns, verified tracking, transparent reporting, and clear communication on everything I do." },
-  { q: "How do I get started?", a: "Fill the form below or message me on WhatsApp. I will review your current setup within 24 hours and tell you exactly what I see and what I would fix — no obligation." },
+  { q: "Can you work with accounts that have never run ads?", a: "Yes. I set up the account, measurement plan and first campaign around the business goal, then validate the early signals before expanding spend or moving to more automated bidding." },
+  { q: "Do you guarantee specific ROAS numbers?", a: "No. Before forecasting returns, we need to understand margin, capacity, conversion quality and what the business counts as a completed sale. My commitment is a clear scope, careful implementation, transparent reporting and honest decisions from the evidence." },
+  { q: "How do I get started?", a: "Fill the form below or message me on WhatsApp. Tell me what you sell, where you operate and what outcome matters most. I will reply with the most useful next step — no obligation." },
 ];
 
 const PROBLEMS = [
-  { title: "Smart Bidding has no signal", desc: "Without verified conversion tracking, Google's algorithm wastes budget on the wrong customers. Every click is a guess — it has no idea which ones are actually buying." },
-  { title: "iOS killed your Meta data", desc: "After iOS 14.5, 30–40% of Meta conversions are invisible to the browser Pixel. Without CAPI server-side events, you're optimizing on data that's missing a third of your customers." },
-  { title: "Your ROAS numbers are wrong", desc: "View-through attribution, duplicate events, wrong Primary conversion actions — your reported numbers and your real business results are not the same thing. The gap costs you money." },
+  { title: "Smart Bidding needs a reliable signal", desc: "If the account cannot distinguish a qualified enquiry or real order from a casual click, automated bidding has limited information to learn from." },
+  { title: "Platform numbers need context", desc: "A reported lead or purchase is a starting signal. It still needs to be checked against the booking, order or service record before budget decisions are made." },
+  { title: "The website can break the chain", desc: "Even relevant traffic can stall on a confusing page, form or checkout. Better creative and targeting work best when the destination matches the promise." },
 ];
 
 const SERVICES = [
-  { title: "Google Ads", desc: "Search, Shopping, Performance Max, Display and YouTube. Keyword research, negative keywords, RSAs, bid strategy progression from Maximize Clicks to Target ROAS. Smart Bidding only works with real conversion data.", highlight: "Smart Bidding optimized from day one." },
-  { title: "Meta Ads", desc: "Facebook and Instagram Sales and Lead Generation. Advantage+ audience, manual targeting, creative testing, full-funnel management. Cold prospecting and warm retargeting structured separately.", highlight: "CAPI verified. EMQ 8.0 on every setup." },
-  { title: "Conversion Tracking", desc: "GTM setup, GA4 ecommerce with dynamic values, Google Ads Enhanced Conversions for Web and Leads, Meta Pixel with Conversion API. Deduplication verified. Shopify, WordPress, WooCommerce, custom sites.", highlight: "Browser + Server + Deduplicated — always." },
+  { title: "Google Ads", desc: "Search and Shopping campaigns built around buyer intent, landing-page relevance and measured outcomes. Bidding evolves as reliable conversion evidence becomes available.", highlight: "Search intent → qualified demand." },
+  { title: "Meta Ads", desc: "Facebook and Instagram campaigns shaped by the offer, creative and buying journey—not just audience settings. Platform results are checked against commercial records.", highlight: "Creative → demand → real orders." },
+  { title: "Websites + Measurement", desc: "WordPress and custom storefront work, conversion paths, GTM, GA4 and event design. I connect what the visitor sees with what the business can actually verify.", highlight: "Experience → signal → decision." },
 ];
 
-const PROJECTS = [
+const EARLIER_PROJECTS = [
   {
     id: 1, title: "GTM Full Stack", subtitle: "GA4 + Enhanced Conversions + Meta CAPI",
     role: "Performance Tracking Specialist — GTM Architecture, Enhanced Conversions, CAPI, GA4 Ecommerce",
@@ -381,6 +471,106 @@ const PROJECTS = [
   },
 ];
 
+// Recent projects lead the portfolio. Platform screenshots are evidence of the
+// labelled interface state, not independent proof of paid/fulfilled outcomes.
+const FEATURED_PROJECTS = [
+  {
+    id: 'first-healthcare-uk', title: 'First Healthcare Limited', subtitle: 'Rebuilding the operating foundation for a UK staffing business',
+    role: 'Business development, supplier onboarding and digital-operations lead · ongoing',
+    category: 'Healthcare staffing · UK', tags: ['Business development', 'Supplier platforms', 'Compliance', 'Digital operations'],
+    coverLabel: 'FIRST HEALTHCARE UK', coverCaption: 'Supplier systems / ongoing',
+    metrics: [
+      { label: 'Work status', value: 'Ongoing' },
+      { label: 'Matrix accreditation', value: 'Approved' },
+      { label: 'Digital growth', value: 'Planned' },
+    ],
+    content: [
+      { type: 'text', heading: 'My responsibility', body: 'I am leading the current business-development and operating-system work for this Bradford-based healthcare staffing company. The aim is to move fragmented supplier, compliance and growth processes into one dependable operation. This is a separate UK company and project from First Health Care Pakistan.' },
+      { type: 'text', heading: 'Work underway', body: 'Mapped the Matrix supplier journey, investigated an expired accreditation, coordinated the fresh application and supported a newly approved agency-worker accreditation. I have also reviewed supplier documents, legal details and insurance requirements; started Turning Point enrolment and Prism onboarding; and pursued a historic timesheet through the right approval route.' },
+      { type: 'text', heading: 'Next operating layer', body: 'Current work includes completing supplier onboarding, improving candidate/compliance records, tracking placements and payments, and identifying opportunities through workforce platforms. Website rebuilding, recruitment funnels, SEO and advertising are part of the forward plan—not presented as already launched.' },
+      { type: 'text', heading: 'Evidence boundary', body: 'This case study is based on the project information supplied for the portfolio. Internal reference numbers, worker details and platform documents are intentionally not published. No placements, paid invoices or digital-campaign outcomes are claimed here.' },
+    ],
+  },
+  {
+    id: 'uk-sofa', title: 'UK Sofa Shop', subtitle: 'Storefront, Meta acquisition & commerce measurement',
+    role: 'Website build contributor (approximately 50%) · paid media and measurement operator',
+    category: 'Ecommerce · UK', tags: ['Next.js', 'Meta Ads', 'Google Ads', 'GTM', 'Supabase'],
+    cover: ukMeta, siteUrl: 'https://www.uksofashop.co.uk/', siteLabel: 'Visit UK Sofa Shop',
+    metrics: [
+      { label: 'Meta-reported purchases', value: '18' },
+      { label: 'Meta cost / result', value: '$36.37' },
+      { label: 'Website contribution', value: '~50%' },
+    ],
+    content: [
+      { type: 'text', heading: 'The work', body: 'Contributed approximately half of the UK Sofa Shop website build, including the customer-facing commerce experience. Helped connect product discovery, checkout and assisted enquiries to a clearer measurement and campaign workflow. The storefront uses Next.js and Supabase; my work spans site implementation, paid acquisition, creative direction and tracking.' },
+      { type: 'text', heading: 'What the evidence shows', body: 'The supplied Meta Ads Manager view for 14–30 September 2026 reports 18 website purchases for the active campaign at $36.37 per reported result. That is a platform attribution figure—not a claim of 18 delivered or paid orders. The tracking screenshot shows configured ecommerce funnel tags, including cart, checkout and order events; configuration alone does not prove every event fired.' },
+      { type: 'img', src: ukMeta, caption: 'Meta Ads Manager, 14–30 September 2026: 18 platform-reported website purchases on the active campaign. Browser chrome and account details are cropped in the portfolio view.' },
+      { type: 'img', src: ukGtm, caption: 'GTM workspace showing UK Sofa ecommerce event architecture. Tag listings are setup evidence, not an event-delivery receipt.' },
+      { type: 'text', heading: 'Commercial lens', body: 'The operating question is which campaigns contribute to confirmed, delivered orders after fulfilment and ad cost—not merely which interface reports a Purchase. That distinction guides the ongoing measurement work.' },
+    ],
+  },
+  {
+    id: 'first-health-care', title: 'First Health Care', subtitle: 'A live service website connected to a lead-to-revenue system',
+    role: 'Website/CRO build · Google and Meta campaigns · GTM/GA4 · lead reconciliation',
+    category: 'Healthcare · Pakistan', tags: ['WordPress', 'Google Ads', 'Meta Ads', 'GTM', 'GA4'],
+    cover: fhcGtm, siteUrl: 'https://firsthealthcare.pk/', siteLabel: 'Visit First Health Care',
+    metrics: [
+      { label: 'Core service routes', value: '6' },
+      { label: 'Google Search campaigns', value: '3' },
+      { label: 'Google-reported conv.', value: '19' },
+    ],
+    content: [
+      { type: 'text', heading: 'The work', body: 'Built and refined the live WordPress service experience: service-specific pages, contact paths, forms and thank-you flows. The acquisition layer includes three Search campaigns across home nursing, elderly care and physiotherapy, plus Meta creative and campaign work. Tracking links enquiry records to qualified and paid-service stages while keeping sensitive health details out of ad-platform payloads.' },
+      { type: 'text', heading: 'What the evidence shows', body: 'A supplied Google Ads screenshot for 23 July–29 September 2026 shows 19 platform-reported conversions across three Search campaigns. This is not a claim of 19 paid patients. A separate GTM view shows event and conversion-tag configuration for form, contact, phone and WhatsApp interactions; the operational register is needed to judge qualified and paid outcomes.' },
+      { type: 'img', src: fhcGoogle, caption: 'Google Ads campaign view: 19 platform-reported conversions in the selected period; paid outcomes require separate reconciliation.' },
+      { type: 'img', src: fhcGtm, caption: 'GTM workspace: form, contact, Google Ads and Meta tag architecture. Configuration screenshot, not universal firing proof.' },
+      { type: 'img', src: fhcMeta, caption: 'Meta creative set in Ads Manager. The shown result is landing-page views, not healthcare leads or sales.' },
+      { type: 'text', heading: 'Why it matters', body: 'The useful outcome is not simply a click or form submit. It is a privacy-safe path from real enquiry to qualified service request and paid work, with unresolved attribution kept unresolved rather than guessed.' },
+    ],
+  },
+  {
+    id: 'academy', title: 'Al Sadiq Global Quran Academy', subtitle: 'Trial-first website and acquisition journey',
+    role: 'Website/CRO, paid-search architecture and enquiry measurement',
+    category: 'Education · UK', tags: ['WordPress', 'Google Ads', 'Meta Ads', 'Lead tracking'],
+    cover: academyGoogle, siteUrl: 'https://alsadiqglobalquranacademy.co.uk/', siteLabel: 'Visit the Academy',
+    metrics: [
+      { label: 'Live trial journey', value: 'Free' },
+      { label: 'Search ad groups', value: '5' },
+      { label: 'Current ad status', value: 'Paused' },
+    ],
+    content: [
+      { type: 'text', heading: 'The work', body: 'Developed the website and trial-led conversion path around one-to-one Quran classes. The acquisition structure separates core online Quran, Tajweed, Hifz, Noorani Qaida and reading intent; Meta creative and enquiry capture form part of the wider programme.' },
+      { type: 'text', heading: 'Current status', body: 'The website and free 30-minute trial offer are live. The latest project master records both Google and Meta advertising as paused. A Google Ads screenshot documents the campaign and its historical traffic, but it is not used here as a conversion or enrolment claim. Enquiry delivery and follow-up remain measurement priorities.' },
+      { type: 'img', src: academyGoogle, caption: 'Historical Google Ads campaign view; the campaign is shown paused. Clicks and spend are not presented as enrolments.' },
+      { type: 'text', heading: 'What I designed for', body: 'A coherent journey from relevant class search to the appropriate course/trial page, form submission, internal enquiry record and eventual paid enrolment—without exposing learner details in ad payloads.' },
+    ],
+  },
+  {
+    id: 'vistamax', title: 'VistaMax Consultants', subtitle: 'A live WordPress experience for application support',
+    role: 'Website/theme build · research · digital operating design',
+    category: 'Advisory · Pakistan', tags: ['WordPress', 'Website design', 'Forms', 'Research'],
+    coverLabel: 'VISTAMAX', coverCaption: 'Application pathways / live site', siteUrl: 'https://vistamaxconsultants.com/', siteLabel: 'Visit VistaMax',
+    metrics: [
+      { label: 'Service paths', value: '3' },
+      { label: 'Managed pages', value: '8' },
+      { label: 'Website status', value: 'Live' },
+    ],
+    content: [
+      { type: 'text', heading: 'The work', body: 'Built the VistaMax Global Desk WordPress experience and managed pages for education applications, international job applications and document/writing support. The work focused on service clarity, page structure, responsive design and a route from enquiry to follow-up.' },
+      { type: 'text', heading: 'Current status', body: 'The production website is publicly accessible at vistamaxconsultants.com. Its three service paths and consultation form are visible; form delivery, analytics and advertising outcomes have not been verified for this case study. No admissions, jobs, visas or client outcomes are claimed.' },
+      { type: 'text', heading: 'Why this project belongs here', body: 'It shows the website and business-system side of my practice: shaping a service proposition, building a usable WordPress experience and keeping marketing claims tied to what is visibly live.' },
+    ],
+  },
+];
+const EARLIER_SAFE_PROJECTS = EARLIER_PROJECTS.map(p => ({
+  ...p,
+  category: 'Earlier portfolio work',
+  subtitle: 'Previously published example · results to revalidate',
+  role: 'Earlier project write-up retained in the portfolio archive',
+  metrics: [{ label: 'Documentation', value: 'Review' }, { label: 'Status', value: 'Archive' }, { label: 'Details', value: 'On request' }],
+  content: [{ type: 'text', heading: 'Documentation status', body: 'This earlier project was published in the original portfolio. Its numerical outcome claims and designed dashboard composites have not been independently reconciled for this update, so they are not presented here as verified results. Source material remains preserved for a later evidence review.' }],
+}));
+
 // ─────────────────────────────────────────────
 // HOOKS & HELPERS
 // ─────────────────────────────────────────────
@@ -391,7 +581,7 @@ function useReveal(threshold = 0.12) {
     const el = ref.current; if (!el) return;
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { setRevealed(true); obs.disconnect(); } }, { threshold });
     obs.observe(el); return () => obs.disconnect();
-  }, []);
+  }, [threshold]);
   return [ref, revealed];
 }
 
@@ -407,7 +597,7 @@ function useCountUp(target, started, decimal = 0, duration = 1600) {
       if (p < 1) requestAnimationFrame(tick);
     };
     requestAnimationFrame(tick);
-  }, [started]);
+  }, [started, target, decimal, duration]);
   return v;
 }
 
@@ -477,14 +667,13 @@ function Nav() {
     const h = () => setScrolled(window.scrollY > 50);
     window.addEventListener("scroll", h); return () => window.removeEventListener("scroll", h);
   }, []);
-  const ArrowIcon = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>;
   return (
     <nav className={`nav ${scrolled ? "nav-scrolled" : ""}`}>
       <div className="nav-inner">
         <div className="nav-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}><span className="logo-ads">ads</span><span className="logo-vocate">vocate</span></div>
         <div className="nav-links">
           {["services", "work", "certifications", "contact"].map(s => <button key={s} className="nav-link" onClick={() => navScrollTo(s)}>{s}</button>)}
-          <button className="btn-primary btn-sm" onClick={() => navScrollTo("contact")}>Let's Talk <ArrowIcon /></button>
+          <button className="btn-primary btn-sm" onClick={() => navScrollTo("contact")}>Let's Talk <ArrowUpRight size={14} /></button>
         </div>
         <button className="nav-hamburger" onClick={() => setMenuOpen(!menuOpen)}><span/><span/><span/></button>
       </div>
@@ -511,7 +700,6 @@ function Nav() {
 function Hero() {
   const [tilt, setTilt] = useState({ x: 0, y: 0 });
   const photoRef = useRef(null);
-  const Arr = () => <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>;
   return (
     <section className="hero">
       <div className="page-grid"></div>
@@ -521,11 +709,11 @@ function Hero() {
         <div className="hero-grid">
           <div className="hero-text">
             <div className="hero-badge fade-up d1"><span className="pulse-dot"></span>Available for new projects</div>
-            <h1 className="fade-up d2">Your Ads Are Spending. <em>Your Tracking Is Lying.</em></h1>
-            <p className="hero-desc fade-up d3">I'm Hassan Ali — performance marketing specialist based in Islamabad. I fix conversion tracking and run high-performance Google and Meta campaigns so your algorithms always have the data they need.</p>
+            <h1 className="fade-up d2">Campaigns. Websites. <em>Measurement that connects them.</em></h1>
+            <p className="hero-desc fade-up d3">I'm Hassan Ali. I build the path from first click to real business outcome—across Google and Meta ads, conversion-focused websites, creative and tracking.</p>
 
             <div className="hero-ctas fade-up d4">
-              <button className="btn-primary" onClick={() => navScrollTo("contact")}>Book a Free Audit <Arr /></button>
+              <button className="btn-primary" onClick={() => navScrollTo("work")}>Explore selected work <ArrowUpRight size={14} /></button>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp Me</a>
             </div>
             <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="hero-dl-link fade-up d5"><Download size={13} />Download Resume</a>
@@ -550,8 +738,8 @@ function Hero() {
                 <img src={hassanPhoto} alt="Hassan Ali" style={{width:"100%",height:"100%",objectFit:"cover",objectPosition:"center 28%"}} />
               </div>
             </div>
-            <div className="hero-float-chip chip-right"><strong>52%</strong><span>MoM Growth</span></div>
-            <div className="hero-float-chip chip-left"><strong>$20k+</strong><span>Revenue Tracked</span></div>
+            <div className="hero-float-chip chip-right"><strong>05</strong><span>Featured projects</span></div>
+            <div className="hero-float-chip chip-left"><strong>End to end</strong><span>Ads · site · signal</span></div>
           </motion.div>
         </div>
       </div>
@@ -560,10 +748,14 @@ function Hero() {
 }
 
 function StatsStrip() {
-  const [ref, inView] = useReveal(0.2);
-  const stats = [{ n: 135, d: "135", l: "Leads Generated" }, { n: 8.54, d: "$8.54", l: "Avg Cost Per Lead" }, { n: 3240, d: "3,240", l: "Clicks Delivered" }, { n: 8.0, d: "8.0/10", l: "Event Match Quality" }];
+  const stats = [
+    { d: '01', l: 'Paid acquisition' },
+    { d: '02', l: 'Website & CRO' },
+    { d: '03', l: 'Tracking & attribution' },
+    { d: '04', l: 'Commercial reporting' },
+  ];
   return (
-    <section className="stats-strip" ref={ref} aria-label="Key results">
+    <section className="stats-strip" aria-label="Areas of work">
       <div className="container">
         <motion.div
           className="stats-grid"
@@ -581,7 +773,7 @@ function StatsStrip() {
                 visible: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.22, 1, 0.36, 1] } }
               }}
             >
-              <div className="stat-value"><StatCount raw={s.n} display={s.d} started={inView} /></div>
+              <div className="stat-value">{s.d}</div>
               <div className="stat-label">{s.l}</div>
             </motion.div>
           ))}
@@ -636,7 +828,7 @@ function ServicesSection() {
             </Reveal>
           ))}
         </div>
-        <Reveal delay={200}><div className="platforms-section"><span className="section-tag" style={{ textAlign: "center", display: "block" }}>Platforms</span><h3 className="platforms-title">Tools I use every day</h3><PlatformGrid /></div></Reveal>
+        <Reveal delay={200}><div className="platforms-section"><span className="section-tag" style={{ textAlign: "center", display: "block" }}>Platforms</span><h3 className="platforms-title">Tools across the build</h3><PlatformGrid /><p className="section-desc" style={{ margin: '24px auto 0' }}>I also work on Amazon and eBay marketplace workflows. Vercel and Supabase feature in custom website projects; the exact stack depends on the business.</p></div></Reveal>
       </div>
     </section>
   );
@@ -650,7 +842,7 @@ function ProjectCard({ project, onOpen, index }) {
   const setRef = el => { cardRef.current = el; ref.current = el; };
   return (
     <Reveal delay={index * 120}>
-      <div ref={setRef} className={`project-card ${hovered ? "project-card-hover" : ""}`}
+      <div ref={setRef} className={`project-card ${project.category === 'Earlier portfolio work' ? 'project-card-archive' : 'project-card-featured'} ${hovered ? "project-card-hover" : ""}`}
         role="button"
         tabIndex={0}
         aria-label={`View case study: ${project.title}`}
@@ -667,25 +859,26 @@ function ProjectCard({ project, onOpen, index }) {
             <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"><path d="M7 17L17 7M17 7H7M17 7v10"/></svg>
           </button>
         </div>
+        {project.cover ? <div className="project-cover"><img src={project.cover} alt={`${project.title} project evidence`} /><span>PLATFORM EVIDENCE · OPEN FOR CONTEXT</span></div> : project.coverLabel ? <div className="project-cover project-cover-type"><span>{project.coverLabel}</span><small>{project.coverCaption || 'Website system / in development'}</small></div> : null}
         <h3 className="project-card-title">{project.title}</h3>
         <p className="project-card-subtitle">{project.subtitle}</p>
         <div className="project-metrics-row">
           {project.metrics.map((m, i) => (
             <div key={i} className="project-metric">
-              <div className="project-metric-val"><StatCount raw={m.raw} display={m.value} started={inView} /></div>
+              <div className="project-metric-val">{m.raw != null ? <StatCount raw={m.raw} display={m.value} started={inView} /> : m.value}</div>
               <div className="project-metric-label">{m.label}</div>
             </div>
           ))}
         </div>
         <div className="project-tags">{project.tags.map((t, i) => <span key={i} className="project-tag">{t}</span>)}</div>
-        <p className="project-card-hint">View full case study</p>
+        <p className="project-card-hint">{project.category === 'Earlier portfolio work' ? 'Open archive note →' : project.siteUrl ? 'Open project → website link & evidence' : 'Open project → current work'}</p>
       </div>
     </Reveal>
   );
 }
 
 function Lightbox({ src, caption, onClose }) {
-  useEffect(() => { const h = e => { if (e.key === "Escape") onClose(); }; window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h); }, []);
+  useEffect(() => { const h = e => { if (e.key === "Escape") onClose(); }; window.addEventListener("keydown", h); return () => window.removeEventListener("keydown", h); }, [onClose]);
   return (
     <div className="lightbox" onClick={onClose}>
       <button className="lightbox-close" onClick={onClose}><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -706,9 +899,8 @@ function CaseStudy({ project, onClose }) {
     const h = e => { if (e.key === "Escape") { if (lightboxImg) setLightboxImg(null); else onClose(); } };
     window.addEventListener("keydown", h);
     return () => { document.body.style.overflow = ""; window.removeEventListener("keydown", h); };
-  }, [lightboxImg]);
+  }, [lightboxImg, onClose]);
   if (!project) return null;
-  const XIcon = () => <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>;
   return (
     <motion.div
       className="case-study-overlay"
@@ -729,7 +921,7 @@ function CaseStudy({ project, onClose }) {
         transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
       >
         <motion.div style={{ position: "sticky", top: 0, height: 3, background: "var(--ac)", scaleX: scrollYProgress, transformOrigin: "0% 50%", zIndex: 5, borderRadius: "0 0 2px 2px", marginBottom: -3 }} />
-        <button className="case-study-close" onClick={onClose}><XIcon /></button>
+        <button className="case-study-close" onClick={onClose}><X size={16} /></button>
         <div className="case-study-header">
           <span className="project-category">{project.category}</span>
           <h2>{project.title}</h2>
@@ -748,6 +940,7 @@ function CaseStudy({ project, onClose }) {
           })}
         </div>
         <div className="case-study-footer">
+          {project.siteUrl && <a href={project.siteUrl} target="_blank" rel="noopener noreferrer" className="case-study-link" style={{ marginRight: 22 }}>{project.siteLabel || 'Visit website'} ↗</a>}
           <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="case-study-link">
             View Upwork Profile <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
@@ -762,9 +955,12 @@ function WorkSection() {
   return (
     <section id="work" className="section">
       <div className="container">
-        <Reveal><div className="section-header"><span className="section-tag">Verified Results</span><h2>Work</h2><p className="section-desc">Each project includes verified screenshots from the actual platform dashboards.</p></div></Reveal>
-        <div className="projects-grid">{PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
+        <Reveal><div className="section-header"><span className="section-tag">Selected work · 2026</span><h2>Built for the whole journey.</h2><p className="section-desc">Five current projects first. Screenshots are labelled by what they demonstrate; platform results are not presented as independently verified sales.</p></div></Reveal>
+        <div className="projects-grid">{FEATURED_PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
+        <div className="archive-heading"><span>Earlier work</span><small>Published examples retained; outcome figures pending source review</small></div>
+        <div className="projects-grid">{EARLIER_SAFE_PROJECTS.map((p, i) => <ProjectCard key={p.id} project={p} onOpen={setModal} index={i} />)}</div>
         <Reveal delay={300}><div className="work-links">
+          {CREATIVE_PORTFOLIO_PDF_URL && <a href={CREATIVE_PORTFOLIO_PDF_URL} target="_blank" rel="noopener noreferrer" className="btn-primary btn-sm">Creative portfolio PDF ↗</a>}
           <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
           <a href="https://www.fiverr.com/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Fiverr Profile <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
         </div></Reveal>
@@ -850,7 +1046,7 @@ function ContactSection() {
   return (
     <section id="contact" className="section">
       <div className="container">
-        <Reveal><div className="section-header"><span className="section-tag">Get Started</span><h2>Book a Free Audit Call</h2><p className="section-desc">I'll review your current setup and tell you exactly what I see and what I'd fix — within 24 hours, no obligation.</p></div></Reveal>
+        <Reveal><div className="section-header"><span className="section-tag">Get Started</span><h2>Tell me what you are building.</h2><p className="section-desc">Share the business goal and where you need support. I will reply with a useful next step—whether that is a call, a focused review or a defined scope.</p></div></Reveal>
         <div className="contact-grid">
           <Reveal delay={100}>
             <div className="contact-col">
@@ -864,7 +1060,7 @@ function ContactSection() {
               {status === "done" ? (
                 <div className="form-success">
                   <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="var(--ac)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
-                  <h3>Got it. I'll be in touch within 24 hours.</h3>
+                  <h3>Got it. I'll be in touch soon.</h3>
                   <p>Check WhatsApp too — I'm usually faster there.</p>
                 </div>
               ) : (
