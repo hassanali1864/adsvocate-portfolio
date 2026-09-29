@@ -1039,7 +1039,7 @@ function WorkSection() {
         <div className="current-work-grid">{CURRENT_WORK.map(p => <CurrentProjectCard key={p.id} project={p} onOpen={setModal} />)}</div>
         <div className="work-actions">
           <div className="work-actions-left">
-            <a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm pdf-link">Creative Portfolio PDF <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
+            <a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm pdf-link">Creative Portfolio <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>
             <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="btn-outline btn-sm">Upwork Profile</a>
           </div>
           <div className="work-actions-right">
