@@ -22,6 +22,14 @@ import fhcGtm from './assets/projects/fhc-gtm.png';
 import fhcMeta from './assets/projects/fhc-meta-creatives.png';
 import academyGoogle from './assets/projects/academy-google-ads.png';
 import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
+import creativePortfolioPdf from './assets/Hassan_Ali_Creative_Portfolio_2026.pdf';
+import ukSofaSite from './assets/projects/evidence/uk-sofa-site.png';
+import fhcSite from './assets/projects/evidence/fhc-site.png';
+import academySite from './assets/projects/evidence/academy-site.png';
+import vistaMaxSite from './assets/projects/evidence/vistamax-site.png';
+import vistaUniversitySummary from './assets/projects/evidence/vistamax-university-summary.png';
+import ebayProfile from './assets/projects/evidence/ebay-profile.png';
+import amazonSeller from './assets/projects/evidence/amazon-seller.png';
 import vistaCss from './vista.css?inline';
 import { Download } from 'lucide-react';
 
@@ -378,7 +386,7 @@ textarea.field{resize:vertical;min-height:90px}
 // ─────────────────────────────────────────────
 const WA_LINK = "https://wa.me/923416495097?text=Hi%20Hassan%2C%20I%20found%20your%20portfolio%20and%20want%20a%20free%20audit";
 const HASSAN_EMAIL = "adswithhsn@gmail.com";
-const CREATIVE_PORTFOLIO_URL = "https://canva.link/7nk714c5z9ldr9c";
+const CREATIVE_PORTFOLIO_URL = creativePortfolioPdf;
 const EMAILJS = { service_id: "service_o8fxyps", template_id: "template_dxjxyq6", user_id: "G20yo67xYtSHdRcHR" };
 
 const PLATFORMS = [
@@ -390,9 +398,12 @@ const PLATFORMS = [
   { name: "Looker Studio", slug: "looker", color: "#4285F4" },
   { name: "WordPress", slug: "wordpress", color: "#21759B" },
   { name: "WooCommerce", slug: "woocommerce", color: "#7F54B3" },
-  { name: "YouTube", slug: "youtube", color: "#FF0000" },
-  { name: "Instagram", slug: "instagram", color: "#E1306C" },
-  { name: "Facebook", slug: "facebook", color: "#1877F2" },
+  { name: "Amazon", slug: "amazon", color: "#FF9900" },
+  { name: "eBay", slug: "ebay", color: "#E53238" },
+  { name: "ChatGPT + Codex", slug: "openai", color: "#10A37F" },
+  { name: "Claude + Claude Code", slug: "anthropic", color: "#D97757" },
+  { name: "Vercel", slug: "vercel", color: "#FFFFFF" },
+  { name: "Supabase", slug: "supabase", color: "#3ECF8E" },
 ];
 
 const CERTS = [
@@ -402,7 +413,7 @@ const CERTS = [
 ];
 
 const FAQS = [
-  { q: "What platforms and tools do you work with?", a: "Google Ads (Search, Shopping, Performance Max, Display, YouTube), Meta Ads (Facebook and Instagram), Google Tag Manager, GA4, Shopify, WordPress and WooCommerce. For campaign management and reporting: Looker Studio, Google Merchant Center, Meta Commerce Manager, and Meta Business Manager." },
+  { q: "What platforms and tools do you work with?", a: "Google Ads, Meta Ads, GTM, GA4, Shopify, WordPress, WooCommerce and Looker Studio—plus Vercel and Supabase for code-first website systems. Amazon, eBay, ChatGPT/Codex and Claude/Claude Code are also part of my current operating stack." },
   { q: "How do you approach measurement?", a: "The measurement plan follows the real business outcome. I verify the relevant events in GTM, GA4 and the ad platforms, document what is platform-reported, and avoid presenting a click or event as a sale when it has not been reconciled." },
   { q: "Do you work with custom-built or headless websites?", a: "Yes. For custom or headless sites, I provide complete GTM installation specifications and a dataLayer implementation brief for your developer. Once the GTM snippet is installed and the dataLayer is pushing events correctly, I configure everything from inside GTM — same result as any other platform." },
   { q: "Can you work with accounts that have never run ads?", a: "Absolutely. I build the correct foundation from scratch — account structure, conversion tracking, campaign architecture, bid strategy progression — so Smart Bidding has real data from day one instead of spending budget blind." },
@@ -492,14 +503,116 @@ const PROJECTS = [
 
 const CURRENT_WORK = [
   {
+    id: "uk-sofa-shop",
+    title: "UK Sofa Shop",
+    subtitle: "Ecommerce build, paid acquisition and purchase measurement",
+    role: "Website contributor and acquisition operator — Meta, Google Ads, GTM and ecommerce operations",
+    category: "UK Ecommerce",
+    tags: ["Meta Ads", "Google Ads", "GTM", "Next.js", "Supabase"],
+    proof: "15-day admin review: 28 orders and £8,556 open-order value · captured 30 Sep 2026.",
+    media: ukSofaSite,
+    mediaLabel: "Live ecommerce experience",
+    coverPosition: "50% 48%",
+    coverScale: 1.02,
+    url: "https://www.uksofashop.co.uk/",
+    metrics: [
+      { label: "Admin review", value: "28 orders" },
+      { label: "Open-order value", value: "£8,556" },
+      { label: "Website contribution", value: "≈50%" },
+    ],
+    content: [
+      { type: "text", heading: "The commercial system", body: "UK Sofa Shop connects a custom ecommerce experience with paid demand, product merchandising, order operations and measurement. I contributed at least half of the website build while also working across Meta, Google Ads and the tracking layer." },
+      { type: "evidence", eyebrow: "Admin evidence · captured 30 Sep 2026", items: [["28", "orders in the reviewed 15-day operating window"], ["£8,556", "open-order value"], ["14", "orders needing attention"]], note: "These are internal order-management figures, not ad-platform attribution. Customer names, addresses and order-level details are intentionally excluded." },
+      { type: "text", heading: "Acquisition and measurement", body: "I built and managed Google and Meta campaign structures and implemented ecommerce measurement across GTM and GA4, including product, cart, checkout and order events. The aim is to compare platform attribution with actual operational orders rather than treating either platform as the only source of truth." },
+      { type: "img", src: ukMeta, caption: "Meta Ads reported 18 website purchases in the supplied account view. This is a platform-attributed result—not the total order count.", focusPosition: "53% 39%", focusScale: 1.18 },
+      { type: "img", src: ukGtm, caption: "GTM implementation covering the ecommerce journey and secondary contact actions.", focusPosition: "52% 45%", focusScale: 1.1 },
+    ],
+  },
+  {
+    id: "first-health-care-pakistan",
+    title: "First Health Care Pakistan",
+    subtitle: "A rebuilt website, acquisition engine and operating measurement layer",
+    role: "End-to-end growth and implementation — WordPress, Google Ads, Meta, GA4, GTM and management systems",
+    category: "Healthcare Growth",
+    tags: ["WordPress", "Google Ads", "Meta Ads", "GA4", "GTM", "Operations"],
+    proof: "50+ internally recorded outcomes · approximately 3× mapped return from reconciled commercial records.",
+    media: fhcSite,
+    mediaLabel: "Website designed and built by Hassan",
+    coverPosition: "50% 48%",
+    coverScale: 1.02,
+    url: "https://firsthealthcare.pk/",
+    metrics: [
+      { label: "Internal outcomes", value: "50+" },
+      { label: "Mapped return", value: "≈3×" },
+      { label: "Website", value: "Built end-to-end" },
+    ],
+    content: [
+      { type: "text", heading: "From loss-making activity to an accountable system", body: "The business needed more than lead generation. I rebuilt the full WordPress website, clarified eight healthcare service routes, restructured the acquisition work and connected enquiries to an internal operational record so the team could see what became a qualified enquiry, a service start and commercial value." },
+      { type: "evidence", eyebrow: "Privacy-safe commercial summary", items: [["50+", "qualified outcomes and service starts recorded internally"], ["≈3×", "mapped return using internal commercial records"], ["8", "service routes built into the website"]], note: "Healthcare outcomes are reconciled in private operational records. Ad platforms receive only privacy-safe conversion signals and therefore show fewer conversions than the internal system." },
+      { type: "text", heading: "What I built", body: "I built the complete website and its conversion paths, planned and managed Google and Meta activity, implemented GA4 and GTM for forms, calls and WhatsApp actions, and created a Sheets-based operating register plus a privacy-safe offline conversion workflow. I am now working on the First Health Care management system so reporting does not depend on ad-platform dashboards alone." },
+      { type: "img", src: fhcGoogle, caption: "Google Ads platform view. Its 19 reported conversions are only the privacy-safe signals available to the platform—not the complete internal commercial record.", focusPosition: "50% 31%", focusScale: 1.22 },
+      { type: "img", src: fhcGtm, caption: "GTM implementation for forms, phone and WhatsApp actions, structured for privacy-safe measurement.", focusPosition: "50% 45%", focusScale: 1.08 },
+      { type: "img", src: fhcMeta, caption: "Meta creative and landing-page engagement implementation across the service portfolio.", focusPosition: "51% 45%", focusScale: 1.12 },
+    ],
+  },
+  {
+    id: "al-sadiq-academy",
+    title: "Al Sadiq Global Quran Academy",
+    subtitle: "A complete website and offer-led path to live 1-to-1 learning",
+    role: "End-to-end build — WordPress, CRO, free-trial offer, Search structure and measurement",
+    category: "Online Education",
+    tags: ["WordPress", "Google Ads", "CRO", "Offer Strategy"],
+    proof: "Website, trial offer, course routes and Search intent aligned into one acquisition path.",
+    media: academySite,
+    mediaLabel: "Website designed and built by Hassan",
+    coverPosition: "50% 48%",
+    coverScale: 1.02,
+    url: "https://alsadiqglobalquranacademy.co.uk/",
+    publicEmail: "info@alsadiqglobalquranacademy.co.uk",
+    metrics: [
+      { label: "Primary offer", value: "Free 30-min trial" },
+      { label: "Learning model", value: "Live 1-to-1" },
+      { label: "Website", value: "Built end-to-end" },
+    ],
+    content: [
+      { type: "text", heading: "The journey", body: "I built the full WordPress experience around the actual decision a parent or adult learner needs to make: understand the live 1-to-1 format, see the available courses and start with a free 30-minute trial. The introductory offer, landing page and enquiry route work as one system." },
+      { type: "text", heading: "Acquisition and measurement", body: "Search intent is grouped around relevant learning needs and connected to the closest page. Trial and enrolment outcomes are handled in the Academy's private operating records; the advertising platform is deliberately not fed sensitive or religious-profile data. This keeps the public reporting honest while still giving the team a commercial view internally." },
+      { type: "img", src: academyGoogle, caption: "Google Ads account activity for Quran classes. Platform data documents traffic and campaign activity; it is not presented as a complete enrolment register.", focusPosition: "49% 32%", focusScale: 1.24 },
+    ],
+  },
+  {
+    id: "vistamax",
+    title: "VistaMax Consultants",
+    subtitle: "A code-first application desk and partner-development system",
+    role: "Sole operator — research, positioning, copy, UX, Next.js, Supabase and institutional outreach",
+    category: "Consulting Platform",
+    tags: ["Next.js", "Supabase", "Vercel", "Research", "Partnership Outreach"],
+    proof: "308 researched university prospects across 9 markets · full website and operating system built by Hassan.",
+    media: vistaMaxSite,
+    mediaLabel: "Website designed and built by Hassan",
+    coverPosition: "50% 48%",
+    coverScale: 1.02,
+    url: "https://vistamaxconsultants.com/",
+    metrics: [
+      { label: "Institutions researched", value: "308" },
+      { label: "Markets mapped", value: "9" },
+      { label: "Ownership", value: "Sole handler" },
+    ],
+    content: [
+      { type: "text", heading: "One accountable desk", body: "I handle VistaMax end to end: market research, service positioning, copy, website design, development, enquiry flow and operational planning. The public experience gives students and job seekers three clear routes—education, job applications and professional documents—without fake promises or confusing hand-offs." },
+      { type: "text", heading: "The build", body: "I built the complete code-first Next.js website, connected Supabase for enquiries and operational data, and deployed it on Vercel. The same design logic carries through desktop and mobile so the site feels like one purposeful application desk rather than a generic consultancy template." },
+      { type: "img", src: vistaUniversitySummary, caption: "Operational research summary: 308 university prospects across nine markets, ranked for outreach fit and verification status.", focusPosition: "50% 46%", focusScale: 1.02 },
+      { type: "text", heading: "Partnership development", body: "The current work includes researching institutions, verifying official contact routes, ranking outreach fit, preparing communication sequences and following partnership opportunities towards formal discussions. The portfolio shows the active pipeline without presenting prospective relationships as completed agreements." },
+    ],
+  },
+  {
     id: "first-healthcare-uk",
-    number: "01",
     title: "First Healthcare Limited",
     subtitle: "Business development and digital operations",
     role: "Current responsibility — supplier onboarding, opportunity development and digital growth planning",
     category: "UK Healthcare",
     tags: ["Business Development", "Supplier Onboarding", "Digital Operations"],
-    proof: "An active operating role, not a past campaign screenshot.",
+    proof: "An active UK operating role covering growth, supplier-facing work and practical follow-through.",
     accent: "type",
     metrics: [
       { label: "Status", value: "Ongoing" },
@@ -509,107 +622,32 @@ const CURRENT_WORK = [
     content: [
       { type: "text", heading: "The responsibility", body: "I support the commercial and digital side of First Healthcare Limited: developing opportunities, helping organise supplier-facing work and shaping how the business presents and grows its services." },
       { type: "text", heading: "What this demonstrates", body: "This work goes beyond campaign setup. It requires commercial judgment, clear communication, operational follow-through and the ability to turn a broad growth objective into practical next actions." },
-      { type: "text", heading: "Current boundary", body: "This is an ongoing responsibility. The portfolio describes the role and workstream without presenting private operational information or unfinished initiatives as completed results." },
+      { type: "text", heading: "Current boundary", body: "This is an ongoing responsibility. The portfolio describes the workstream without publishing private operational information or presenting unfinished initiatives as completed results." },
     ],
   },
   {
-    id: "uk-sofa-shop",
-    number: "02",
-    title: "UK Sofa Shop",
-    subtitle: "Ecommerce website, paid media and purchase measurement",
-    role: "Website contributor and acquisition operator — Meta, Google Ads, GTM and ecommerce journey",
-    category: "UK Ecommerce",
-    tags: ["Meta Ads", "Google Ads", "GTM", "Next.js", "Supabase"],
-    proof: "18 Meta-reported purchases in the supplied account view.",
-    media: ukMeta,
-    mediaLabel: "Meta Ads · purchase campaign",
-    coverPosition: "52% 41%",
-    coverScale: 1.18,
-    url: "https://www.uksofashop.co.uk/",
+    id: "marketplaces",
+    title: "Amazon + eBay Marketplaces",
+    subtitle: "Marketplace research, setup and operating foundations",
+    role: "Marketplace operator — account research, product setup, listing preparation and launch planning",
+    category: "Marketplace Operations",
+    tags: ["Amazon", "eBay", "Product Research", "Listing Operations"],
+    proof: "eBay public proof: 322 items sold and 98.7% positive feedback · Amazon UK account healthy and in setup.",
+    media: ebayProfile,
+    mediaLabel: "Public eBay seller profile",
+    coverPosition: "50% 50%",
+    coverScale: 1.02,
+    url: "https://www.ebay.co.uk/usr/muhasa7744",
     metrics: [
-      { label: "Meta result", value: "18 purchases" },
-      { label: "Website role", value: "≈50% contribution" },
-      { label: "Measurement", value: "GA4 + GTM" },
+      { label: "eBay items sold", value: "322" },
+      { label: "Positive feedback", value: "98.7%" },
+      { label: "Amazon status", value: "Healthy" },
     ],
     content: [
-      { type: "text", heading: "The system", body: "UK Sofa Shop combines an ecommerce website, product-led paid acquisition and a measurement layer designed to connect product discovery with checkout behaviour." },
-      { type: "text", heading: "My contribution", body: "I contributed substantially to the website build and worked across Google Ads, Meta Ads and GTM. The objective was one operating system: traffic, product experience and purchase measurement supporting the same commercial journey." },
-      { type: "img", src: ukMeta, caption: "Supplied Meta Ads view showing 18 platform-reported website purchases. This is platform attribution, not a claim of independently reconciled fulfilled orders.", focusPosition: "53% 39%", focusScale: 1.18 },
-      { type: "img", src: ukGtm, caption: "Google Tag Manager implementation covering ecommerce and contact events.", focusPosition: "52% 45%", focusScale: 1.1 },
-    ],
-  },
-  {
-    id: "first-health-care-pakistan",
-    number: "03",
-    title: "First Health Care Pakistan",
-    subtitle: "A coordinated website, ads and lead-measurement system",
-    role: "Growth and implementation — website/CRO, Google Ads, Meta, GA4 and GTM",
-    category: "Healthcare Growth",
-    tags: ["WordPress", "Google Ads", "Meta Ads", "GA4", "GTM"],
-    proof: "19 Google Ads-reported conversions in the supplied account view.",
-    media: fhcGoogle,
-    mediaLabel: "Google Ads · service demand",
-    coverPosition: "50% 30%",
-    coverScale: 1.22,
-    url: "https://firsthealthcare.pk/",
-    metrics: [
-      { label: "Service routes", value: "8" },
-      { label: "Ads view", value: "19 conversions" },
-      { label: "Stack", value: "WP + GA4 + GTM" },
-    ],
-    content: [
-      { type: "text", heading: "The business problem", body: "Several healthcare services needed to be understandable without forcing families through a generic page. The website now routes people by care requirement while keeping privacy and availability boundaries visible." },
-      { type: "text", heading: "What I built", body: "I worked across the WordPress experience, service positioning, Google and Meta campaigns, lead paths and the measurement architecture connecting forms, calls and WhatsApp interactions." },
-      { type: "img", src: fhcGoogle, caption: "Supplied Google Ads account view. Reported conversions are shown as platform results and are not presented as paid-patient revenue.", focusPosition: "50% 31%", focusScale: 1.22 },
-      { type: "img", src: fhcGtm, caption: "GTM implementation covering lead, phone and WhatsApp actions.", focusPosition: "50% 45%", focusScale: 1.08 },
-      { type: "img", src: fhcMeta, caption: "Meta creative and landing-page engagement implementation.", focusPosition: "51% 45%", focusScale: 1.12 },
-    ],
-  },
-  {
-    id: "al-sadiq-academy",
-    number: "04",
-    title: "Al Sadiq Global Quran Academy",
-    subtitle: "An offer-led trial journey for live 1-to-1 learning",
-    role: "Growth system — website/CRO, trial journey, Search structure and measurement",
-    category: "Online Education",
-    tags: ["WordPress", "Google Ads", "CRO", "Offer Strategy"],
-    proof: "Free-trial journey, course routes and Search structure built as one path.",
-    media: academyGoogle,
-    mediaLabel: "Google Ads · Quran classes",
-    coverPosition: "49% 32%",
-    coverScale: 1.24,
-    url: "https://alsadiqglobalquranacademy.co.uk/",
-    metrics: [
-      { label: "Primary journey", value: "Free 30-min trial" },
-      { label: "Learning model", value: "Live 1-to-1" },
-      { label: "Market", value: "UK + worldwide" },
-    ],
-    content: [
-      { type: "text", heading: "The journey", body: "The website leads with the actual experience: live 1-to-1 guidance, flexible scheduling and a free 30-minute trial. Courses remain available for deeper exploration, but the first decision is intentionally simple." },
-      { type: "text", heading: "The acquisition work", body: "I worked on the relationship between Search intent, landing-page relevance, the introductory offer and the measurement needed to understand which enquiries become real trial and enrolment activity." },
-      { type: "img", src: academyGoogle, caption: "Supplied Google Ads view for the Academy Search campaign. The screenshot documents account activity; it does not imply enrolments that were not reconciled.", focusPosition: "49% 32%", focusScale: 1.24 },
-    ],
-  },
-  {
-    id: "vistamax",
-    number: "05",
-    title: "VistaMax Consultants",
-    subtitle: "A code-first application desk with a real enquiry backend",
-    role: "Website and system build — UX, copy, Next.js migration and Supabase enquiry flow",
-    category: "Consulting Platform",
-    tags: ["Next.js", "Supabase", "Vercel", "Conversion UX"],
-    proof: "Three clear routes: education, jobs, and professional documents.",
-    accent: "type",
-    url: "https://vistamaxconsultants.com/",
-    metrics: [
-      { label: "Core routes", value: "3" },
-      { label: "Frontend", value: "Next.js" },
-      { label: "Backend", value: "Supabase" },
-    ],
-    content: [
-      { type: "text", heading: "The design system", body: "VistaMax uses a route-first experience: large editorial typography, numbered service cards and a compact mobile selector that lets visitors choose their path before reading the detail." },
-      { type: "text", heading: "The build", body: "The approved WordPress experience was migrated into a code-first Next.js application while retaining its content, visual language and public routes. Supabase supports the enquiry flow and Vercel supports deployment." },
-      { type: "text", heading: "Why it matters here", body: "This project demonstrates that I can work beyond an ad dashboard: positioning, copy, responsive UX, frontend implementation, backend connection and measurement can be treated as one conversion system." },
+      { type: "text", heading: "Two marketplaces, two evidence levels", body: "The eBay profile provides public operating proof: 322 items sold, 155 feedback entries and a 98.7% positive rating. The Amazon engagement is newer and is currently in research and setup—so it is presented as an active build, not as a sales result." },
+      { type: "img", src: ebayProfile, caption: "Public eBay profile showing 322 items sold, 155 feedback entries and 98.7% positive feedback.", focusPosition: "50% 50%", focusScale: 1.01 },
+      { type: "img", src: amazonSeller, caption: "Amazon Seller Central UK account in healthy standing, with four products currently in setup and marketplace expansion research underway.", focusPosition: "50% 50%", focusScale: 1.01 },
+      { type: "text", heading: "Current scope", body: "The marketplace work covers product and competitor research, account configuration, listing preparation and launch sequencing. Any future performance figures will be added only after live sales data exists and can be verified." },
     ],
   },
 ];
@@ -1009,6 +1047,13 @@ function CaseStudy({ project, onClose }) {
         <div className="case-study-body">
           {project.content.map((block, i) => {
             if (block.type === "text") return <div key={i} className="cs-text-block"><h4>{block.heading}</h4><p>{block.body}</p></div>;
+            if (block.type === "evidence") return (
+              <div key={i} className="cs-evidence">
+                <p className="cs-evidence-eyebrow">{block.eyebrow}</p>
+                <div className="cs-evidence-grid">{block.items.map(([value, label]) => <div key={label}><strong>{value}</strong><span>{label}</span></div>)}</div>
+                <p className="cs-evidence-note">{block.note}</p>
+              </div>
+            );
             if (block.type === "img") return <ProjectImage key={i} {...block} onClick={() => setLightboxImg({ src: block.src, caption: block.caption })} />;
             return null;
           })}
@@ -1017,7 +1062,8 @@ function CaseStudy({ project, onClose }) {
           <a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer" className="case-study-link">
             View Upwork Profile <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
-          {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="case-study-link case-study-website">Visit live website <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>}
+          {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="case-study-link case-study-website">Verify on live site <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>}
+          {project.publicEmail && <a href={`mailto:${project.publicEmail}`} className="case-study-link">Official project email: {project.publicEmail}</a>}
         </div>
       </motion.div>
     </motion.div>
@@ -1205,6 +1251,13 @@ const Arrow = () => (
   </svg>
 );
 
+const WhatsAppMark = ({ size = 20 }) => (
+  <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.9" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M20.5 11.6a8.5 8.5 0 0 1-12.7 7.4L3 20.5l1.5-4.7A8.5 8.5 0 1 1 20.5 11.6Z"/>
+    <path d="M8.4 7.8c.3-.4.6-.4.9-.1l1 1.3c.2.3.2.6 0 .9l-.5.7c.8 1.6 2 2.7 3.6 3.4l.6-.7c.2-.3.6-.3.9-.1l1.4.9c.3.2.4.6.2.9-.5 1-1.3 1.5-2.4 1.4-3.5-.4-6.8-3.6-7.2-7.1-.1-.6.2-1.1.5-1.5Z"/>
+  </svg>
+);
+
 function VistaNav() {
   const [open, setOpen] = useState(false);
   useEffect(() => {
@@ -1213,7 +1266,7 @@ function VistaNav() {
   }, [open]);
   const go = id => { setOpen(false); navScrollTo(id); };
   const routes = [
-    ["01", "Work", "Nine visible case studies", "work"],
+    ["01", "Work", "Ten visible case studies", "work"],
     ["02", "Services", "Ads, web and measurement", "services"],
     ["03", "Credentials", "Verified certifications", "certifications"],
     ["04", "Contact", "Go directly to the form", "project-form"],
@@ -1303,7 +1356,7 @@ function portfolioItems() {
     const firstImage = project.content.find(block => block.type === "img");
     return {
       ...project,
-      portfolioNumber: String(index + 6).padStart(2, "0"),
+      portfolioNumber: String(index + 7).padStart(2, "0"),
       proof: project.metrics.map(metric => `${metric.value} ${metric.label}`).join(" · "),
       media: firstImage?.src,
       mediaLabel: project.category,
@@ -1355,8 +1408,8 @@ function VistaWork() {
     <section id="work" className="v-section v-work">
       <div className="v-container">
         <div className="v-section-intro">
-          <div><p className="v-kicker">Selected systems · 01—09</p><h2 className="v-section-title">The work stays visible.</h2></div>
-          <p>Nine current and technical case studies, presented in one consistent system. No hidden archive and no horizontal rail. Open any card for the implementation detail and supporting evidence.</p>
+          <div><p className="v-kicker">Selected systems · 01—10</p><h2 className="v-section-title">The work stays visible.</h2></div>
+          <p>Ten current and technical case studies, presented in one consistent system. No hidden archive and no horizontal rail. Open any card for the implementation detail, evidence boundaries and public verification routes.</p>
         </div>
         <div className="v-work-grid">
           {items.map((project, index) => <VistaWorkCard key={project.id} project={project} index={index} onOpen={setModal} />)}
@@ -1395,7 +1448,7 @@ function VistaServices() {
         <div className="v-tool-board">
           <div className="v-tool-head"><span>Working stack</span><span>Used across planning, implementation and QA</span></div>
           <div className="v-tool-grid">
-            {PLATFORMS.slice(0,10).map(tool => <div className="v-tool" key={tool.name}><Ico slug={tool.slug} size={20} style={{ filter: "invert(1)" }} /><span>{tool.name}</span></div>)}
+            {PLATFORMS.map(tool => <div className="v-tool" key={tool.name}><Ico slug={tool.slug} size={20} style={{ filter: "invert(1)" }} /><span>{tool.name}</span></div>)}
           </div>
         </div>
       </div>
@@ -1412,7 +1465,12 @@ function VistaCertifications() {
           <p>Credentials are listed as one verification board, following the same structured, visible treatment as the rest of the portfolio.</p>
         </div>
         <div className="v-cert-board">
-          <div className="v-cert-head"><span>Credential register</span><span>Open issuer verification</span></div>
+          <div className="v-cert-head"><span>Background + credential register</span><span>Education and issuer verification</span></div>
+          <div className="v-cert v-cert--education">
+            <div className="v-cert-icon">CS</div>
+            <div><h3>00 · Bachelor of Science in Computer Science</h3><p>Graduated 2026 · Technical foundation for web, data and automation work</p></div>
+            <span className="v-cert-verify">Education</span>
+          </div>
           {CERTS.map((cert,index) => (
             <a className="v-cert" href={cert.url} target="_blank" rel="noopener noreferrer" key={cert.name}>
               <div className="v-cert-icon"><Ico slug={cert.slug} size={21} /></div>
@@ -1450,7 +1508,7 @@ function VistaContact() {
             <h2>Bring me the business problem.</h2>
             <p>Tell me what needs to improve, what is already in place and where the current system is losing momentum.</p>
             <div className="v-direct-links">
-              <a className="v-direct-link" href={WA_LINK} target="_blank" rel="noopener noreferrer"><span className="v-direct-icon">WA</span><span><small>Fastest response</small><b>WhatsApp Hassan</b></span><Arrow /></a>
+              <a className="v-direct-link" href={WA_LINK} target="_blank" rel="noopener noreferrer"><span className="v-direct-icon"><WhatsAppMark /></span><span><small>Fastest response</small><b>WhatsApp Hassan</b></span><Arrow /></a>
               <a className="v-direct-link" href={`mailto:${HASSAN_EMAIL}`}><span className="v-direct-icon">@</span><span><small>Email</small><b>{HASSAN_EMAIL}</b></span><Arrow /></a>
             </div>
           </div>
@@ -1490,13 +1548,13 @@ function VistaFooter() {
         <div className="v-container">
           <div className="v-footer-main">
             <div><div className="v-logo"><span className="logo-ads">ads</span><span className="logo-vocate">vocate</span></div><p className="v-footer-copy">Paid acquisition, websites and measurement designed as one practical commercial system.</p></div>
-            <div className="v-footer-col"><h3>Evidence</h3><button className="v-link" onClick={() => navScrollTo("work")}>Case studies</button><a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio</a><a href={resumePdf} download>Download CV</a></div>
+            <div className="v-footer-col"><h3>Evidence</h3><button className="v-footer-jump" onClick={() => navScrollTo("work")}>Case studies</button><a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio</a><a href={resumePdf} download>Download CV</a></div>
             <div className="v-footer-col"><h3>Contact</h3><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp</a><a href={`mailto:${HASSAN_EMAIL}`}>{HASSAN_EMAIL}</a><a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer">Upwork</a></div>
           </div>
           <div className="v-footer-bottom"><span>© 2026 Hassan Ali · Islamabad, Pakistan</span><span>Strategy · implementation · verification</span></div>
         </div>
       </footer>
-      <a className="v-whatsapp" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hassan">WA <span>WhatsApp Hassan</span></a>
+      <a className="v-whatsapp" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hassan"><WhatsAppMark size={22} /><span>WhatsApp Hassan</span></a>
     </>
   );
 }
