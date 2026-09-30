@@ -141,7 +141,7 @@ h1, h2, h3, h4, p { margin-top: 0; }
 .v-hero::before { position: absolute; inset: 0; z-index: -2; background: radial-gradient(circle at 82% 20%,rgba(207,228,222,.22),transparent 30%), linear-gradient(125deg,var(--teal-dark),var(--ink) 82%); content: ''; }
 .v-hero::after { position: absolute; right: -13vw; bottom: -22vw; z-index: -1; width: 49vw; height: 49vw; border: 1px solid rgba(207,228,222,.18); border-radius: 50%; box-shadow: 0 0 0 80px rgba(207,228,222,.04),0 0 0 160px rgba(207,228,222,.025); content: ''; }
 .v-hero-main { display: grid; grid-template-columns: 1.05fr .72fr; align-items: center; gap: 52px; padding: clamp(58px,7vw,96px) 0 34px; }
-.v-hero h1 { max-width: 820px; margin: 0 0 26px; font-family: var(--display); font-size: clamp(4.3rem,8vw,9rem); font-weight: 800; letter-spacing: -.082em; line-height: .82; }
+.v-hero h1 { max-width: 820px; margin: 0 0 26px; font-family: var(--display); font-size: clamp(4.2rem,6.8vw,8rem); font-weight: 800; letter-spacing: -.062em; word-spacing: .075em; line-height: .86; }
 .v-hero h1 em { display: block; color: var(--teal-soft); font-style: normal; font-variation-settings: 'wdth' 82; }
 .v-hero-lead { max-width: 670px; margin-bottom: 30px; color: rgba(255,255,255,.76); font-size: clamp(1rem,1.4vw,1.22rem); }
 .v-hero-actions, .v-hero-links { display: flex; flex-wrap: wrap; gap: 14px; }
@@ -282,9 +282,15 @@ textarea.v-field { min-height: 130px; resize: vertical; }
 .cs-evidence-grid strong { color: var(--teal-soft); font-family: var(--display); font-size: clamp(1.55rem,4vw,2.35rem); line-height: 1; }
 .cs-evidence-grid span { margin-top: 7px; color: rgba(255,255,255,.72); font-size: .67rem; line-height: 1.45; }
 .cs-evidence-note { margin: 18px 0 0; padding-top: 14px; border-top: 1px solid rgba(255,255,255,.18); color: rgba(255,255,255,.64); font-size: .69rem; line-height: 1.55; }
-.project-image { margin: 24px 0; }
-.project-image-frame { height: 340px; position: relative; border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; background: var(--bg-alt); }
+.project-image { margin: 30px 0; }
+.project-image-eyebrow { width: fit-content; margin: 0 0 9px; padding: 6px 9px; border-radius: 6px; color: white; background: var(--teal-dark); font-size: .59rem; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+.project-image-frame { height: 360px; position: relative; border: 2px solid var(--ink); border-radius: 18px; overflow: hidden; background: #e8e5de; }
+.project-image--compact .project-image-frame { height: 270px; }
+.project-image--wide .project-image-frame { height: 410px; }
+.project-image--tall .project-image-frame { height: 500px; }
 .project-image-frame img { width: 100%; height: 100%; object-fit: cover; object-position: var(--focus-position,50% 50%); transform: scale(var(--focus-scale,1)); }
+.project-image-frame--contain { padding: 12px; background: #d9d5cd; }
+.project-image-frame--contain img { object-fit: contain; transform: none; border-radius: 10px; box-shadow: 0 8px 24px rgba(22,32,43,.13); }
 .img-caption { margin: 8px 0 0; color: var(--muted); font-size: .68rem; text-align: center; }
 .case-study-footer { display: flex; gap: 18px; flex-wrap: wrap; padding: 20px 32px; border-top: 2px solid var(--ink); }
 .case-study-link { color: var(--teal-dark); font-size: .75rem; font-weight: 800; }
@@ -310,6 +316,11 @@ textarea.v-field { min-height: 130px; resize: vertical; }
   .v-contact-copy { position: static; }
   .v-footer-main { grid-template-columns: 1.2fr .8fr; }
   .v-footer-main > .v-footer-col:last-child { grid-column: 2; }
+}
+
+@media (min-width: 681px) and (max-width: 1100px) {
+  .v-hero-main { padding-top: 64px; }
+  .v-hero h1 { max-width: 760px; font-size: clamp(4.4rem,9.2vw,5.8rem); letter-spacing: -.048em; word-spacing: .11em; line-height: .89; }
 }
 
 @media (max-width: 680px) {
@@ -369,7 +380,10 @@ textarea.v-field { min-height: 130px; resize: vertical; }
   .cs-evidence-grid > div { padding-right: 7px; }
   .cs-evidence-grid strong { font-size: 1.35rem; }
   .cs-evidence-grid span { font-size: .58rem; }
-  .project-image-frame { height: 220px; }
+  .project-image-frame, .project-image--wide .project-image-frame { height: 230px; }
+  .project-image--compact .project-image-frame { height: 190px; }
+  .project-image--tall .project-image-frame { height: 360px; }
+  .project-image-frame--contain { padding: 7px; }
   .case-study-footer { padding: 18px; }
 }
 

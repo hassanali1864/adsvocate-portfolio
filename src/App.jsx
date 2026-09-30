@@ -30,6 +30,10 @@ import vistaMaxSite from './assets/projects/evidence/vistamax-site.png';
 import vistaUniversitySummary from './assets/projects/evidence/vistamax-university-summary.png';
 import ebayProfile from './assets/projects/evidence/ebay-profile.png';
 import amazonSeller from './assets/projects/evidence/amazon-seller.png';
+import ukSofaAdminSummary from './assets/projects/evidence/uk-sofa-admin-summary.png';
+import fhcOperationsRegister from './assets/projects/evidence/fhc-operations-register-redacted.png';
+import fhcOfflineConversion from './assets/projects/evidence/fhc-offline-conversion-redacted.png';
+import vistaUniversityMaster from './assets/projects/evidence/vistamax-university-master-safe.png';
 import vistaCss from './vista.css?inline';
 import { Download } from 'lucide-react';
 
@@ -515,6 +519,7 @@ const CURRENT_WORK = [
     coverPosition: "50% 48%",
     coverScale: 1.02,
     url: "https://www.uksofashop.co.uk/",
+    publicEmail: "info@uksofashop.co.uk",
     metrics: [
       { label: "Admin review", value: "28 orders" },
       { label: "Open-order value", value: "£8,556" },
@@ -522,10 +527,12 @@ const CURRENT_WORK = [
     ],
     content: [
       { type: "text", heading: "The commercial system", body: "UK Sofa Shop connects a custom ecommerce experience with paid demand, product merchandising, order operations and measurement. I contributed at least half of the website build while also working across Meta, Google Ads and the tracking layer." },
+      { type: "img", src: ukSofaSite, eyebrow: "01 / Customer experience", caption: "The live UK Sofa Shop experience: a custom storefront, product journey and purchase path built to turn paid demand into an order.", fit: "contain", height: "wide" },
       { type: "evidence", eyebrow: "Admin evidence · captured 30 Sep 2026", items: [["28", "orders in the reviewed 15-day operating window"], ["£8,556", "open-order value"], ["14", "orders needing attention"]], note: "These are internal order-management figures, not ad-platform attribution. Customer names, addresses and order-level details are intentionally excluded." },
+      { type: "img", src: ukSofaAdminSummary, eyebrow: "02 / Operational reality", caption: "Privacy-safe admin overview showing the real order workload and open-order value. The portfolio excludes every customer-level row.", fit: "contain", height: "compact" },
       { type: "text", heading: "Acquisition and measurement", body: "I built and managed Google and Meta campaign structures and implemented ecommerce measurement across GTM and GA4, including product, cart, checkout and order events. The aim is to compare platform attribution with actual operational orders rather than treating either platform as the only source of truth." },
-      { type: "img", src: ukMeta, caption: "Meta Ads reported 18 website purchases in the supplied account view. This is a platform-attributed result—not the total order count.", focusPosition: "53% 39%", focusScale: 1.18 },
-      { type: "img", src: ukGtm, caption: "GTM implementation covering the ecommerce journey and secondary contact actions.", focusPosition: "52% 45%", focusScale: 1.1 },
+      { type: "img", src: ukMeta, eyebrow: "03 / Paid acquisition", caption: "Meta Ads reported 18 website purchases in the supplied account view. This is a platform-attributed result—not the total order count.", fit: "contain", height: "wide" },
+      { type: "img", src: ukGtm, eyebrow: "04 / Measurement layer", caption: "GTM implementation covering the ecommerce journey and secondary contact actions.", fit: "contain", height: "wide" },
     ],
   },
   {
@@ -541,6 +548,7 @@ const CURRENT_WORK = [
     coverPosition: "50% 48%",
     coverScale: 1.02,
     url: "https://firsthealthcare.pk/",
+    publicEmail: "info@firsthealthcare.pk",
     metrics: [
       { label: "Internal outcomes", value: "50+" },
       { label: "Mapped return", value: "≈3×" },
@@ -548,11 +556,14 @@ const CURRENT_WORK = [
     ],
     content: [
       { type: "text", heading: "From loss-making activity to an accountable system", body: "The business needed more than lead generation. I rebuilt the full WordPress website, clarified eight healthcare service routes, restructured the acquisition work and connected enquiries to an internal operational record so the team could see what became a qualified enquiry, a service start and commercial value." },
+      { type: "img", src: fhcSite, eyebrow: "01 / Customer experience", caption: "The complete First Health Care WordPress experience, built around clear service routes, location and callback intent.", fit: "contain", height: "wide" },
       { type: "evidence", eyebrow: "Privacy-safe commercial summary", items: [["50+", "qualified outcomes and service starts recorded internally"], ["≈3×", "mapped return using internal commercial records"], ["8", "service routes built into the website"]], note: "Healthcare outcomes are reconciled in private operational records. Ad platforms receive only privacy-safe conversion signals and therefore show fewer conversions than the internal system." },
       { type: "text", heading: "What I built", body: "I built the complete website and its conversion paths, planned and managed Google and Meta activity, implemented GA4 and GTM for forms, calls and WhatsApp actions, and created a Sheets-based operating register plus a privacy-safe offline conversion workflow. I am now working on the First Health Care management system so reporting does not depend on ad-platform dashboards alone." },
-      { type: "img", src: fhcGoogle, caption: "Google Ads platform view. Its 19 reported conversions are only the privacy-safe signals available to the platform—not the complete internal commercial record.", focusPosition: "50% 31%", focusScale: 1.22 },
-      { type: "img", src: fhcGtm, caption: "GTM implementation for forms, phone and WhatsApp actions, structured for privacy-safe measurement.", focusPosition: "50% 45%", focusScale: 1.08 },
-      { type: "img", src: fhcMeta, caption: "Meta creative and landing-page engagement implementation across the service portfolio.", focusPosition: "51% 45%", focusScale: 1.12 },
+      { type: "img", src: fhcOperationsRegister, eyebrow: "02 / Internal operating record", caption: "Redacted enquiry and service register. The visible structure shows stage, service route and plan; personal and commercial row-level fields are obscured.", fit: "contain", height: "wide" },
+      { type: "img", src: fhcGoogle, eyebrow: "03 / Search acquisition", caption: "Google Ads platform view. Its 19 reported conversions are only the privacy-safe signals available to the platform—not the complete internal commercial record.", fit: "contain", height: "wide" },
+      { type: "img", src: fhcMeta, eyebrow: "04 / Meta acquisition", caption: "Meta creative and landing-page engagement implementation across the service portfolio.", fit: "contain", height: "wide" },
+      { type: "img", src: fhcGtm, eyebrow: "05 / Event architecture", caption: "GTM implementation for forms, phone and WhatsApp actions, structured for privacy-safe measurement.", fit: "contain", height: "wide" },
+      { type: "img", src: fhcOfflineConversion, eyebrow: "06 / Reconciliation workflow", caption: "Redacted offline-conversion workflow connecting qualified leads and paid service starts back to Google Ads without publishing click IDs or internal order references.", fit: "contain", height: "wide" },
     ],
   },
   {
@@ -576,8 +587,9 @@ const CURRENT_WORK = [
     ],
     content: [
       { type: "text", heading: "The journey", body: "I built the full WordPress experience around the actual decision a parent or adult learner needs to make: understand the live 1-to-1 format, see the available courses and start with a free 30-minute trial. The introductory offer, landing page and enquiry route work as one system." },
+      { type: "img", src: academySite, eyebrow: "01 / Offer and website", caption: "The live Academy website, built around a free 30-minute trial and clear 1-to-1 learning routes.", fit: "contain", height: "wide" },
       { type: "text", heading: "Acquisition and measurement", body: "Search intent is grouped around relevant learning needs and connected to the closest page. Trial and enrolment outcomes are handled in the Academy's private operating records; the advertising platform is deliberately not fed sensitive or religious-profile data. This keeps the public reporting honest while still giving the team a commercial view internally." },
-      { type: "img", src: academyGoogle, caption: "Google Ads account activity for Quran classes. Platform data documents traffic and campaign activity; it is not presented as a complete enrolment register.", focusPosition: "49% 32%", focusScale: 1.24 },
+      { type: "img", src: academyGoogle, eyebrow: "02 / Search campaign", caption: "Google Ads account activity for Quran classes. Platform data documents traffic and campaign activity; it is not presented as a complete enrolment register.", fit: "contain", height: "wide" },
     ],
   },
   {
@@ -593,6 +605,7 @@ const CURRENT_WORK = [
     coverPosition: "50% 48%",
     coverScale: 1.02,
     url: "https://vistamaxconsultants.com/",
+    publicEmail: "vistamaxconsultants@gmail.com",
     metrics: [
       { label: "Institutions researched", value: "308" },
       { label: "Markets mapped", value: "9" },
@@ -601,7 +614,9 @@ const CURRENT_WORK = [
     content: [
       { type: "text", heading: "One accountable desk", body: "I handle VistaMax end to end: market research, service positioning, copy, website design, development, enquiry flow and operational planning. The public experience gives students and job seekers three clear routes—education, job applications and professional documents—without fake promises or confusing hand-offs." },
       { type: "text", heading: "The build", body: "I built the complete code-first Next.js website, connected Supabase for enquiries and operational data, and deployed it on Vercel. The same design logic carries through desktop and mobile so the site feels like one purposeful application desk rather than a generic consultancy template." },
-      { type: "img", src: vistaUniversitySummary, caption: "Operational research summary: 308 university prospects across nine markets, ranked for outreach fit and verification status.", focusPosition: "50% 46%", focusScale: 1.02 },
+      { type: "img", src: vistaMaxSite, eyebrow: "01 / Public experience", caption: "The VistaMax application desk: a code-first Next.js experience designed and built as one clear route from enquiry to prepared file.", fit: "contain", height: "wide" },
+      { type: "img", src: vistaUniversitySummary, eyebrow: "02 / Research coverage", caption: "Operational research summary: 308 university prospects across nine markets, ranked for outreach fit and verification status.", fit: "contain", height: "compact" },
+      { type: "img", src: vistaUniversityMaster, eyebrow: "03 / Outreach operating system", caption: "A privacy-safe view of the master list: market, institution type, official website, fit score, verification status and next research step.", fit: "contain", height: "wide" },
       { type: "text", heading: "Partnership development", body: "The current work includes researching institutions, verifying official contact routes, ranking outreach fit, preparing communication sequences and following partnership opportunities towards formal discussions. The portfolio shows the active pipeline without presenting prospective relationships as completed agreements." },
     ],
   },
@@ -613,6 +628,7 @@ const CURRENT_WORK = [
     category: "UK Healthcare",
     tags: ["Business Development", "Supplier Onboarding", "Digital Operations"],
     proof: "An active UK operating role covering growth, supplier-facing work and practical follow-through.",
+    publicEmail: "info@firsthealthcareltd.com",
     accent: "type",
     metrics: [
       { label: "Status", value: "Ongoing" },
@@ -645,8 +661,8 @@ const CURRENT_WORK = [
     ],
     content: [
       { type: "text", heading: "Two marketplaces, two evidence levels", body: "The eBay profile provides public operating proof: 322 items sold, 155 feedback entries and a 98.7% positive rating. The Amazon engagement is newer and is currently in research and setup—so it is presented as an active build, not as a sales result." },
-      { type: "img", src: ebayProfile, caption: "Public eBay profile showing 322 items sold, 155 feedback entries and 98.7% positive feedback.", focusPosition: "50% 50%", focusScale: 1.01 },
-      { type: "img", src: amazonSeller, caption: "Amazon Seller Central UK account in healthy standing, with four products currently in setup and marketplace expansion research underway.", focusPosition: "50% 50%", focusScale: 1.01 },
+      { type: "img", src: ebayProfile, eyebrow: "01 / Established marketplace proof", caption: "Public eBay profile showing 322 items sold, 155 feedback entries and 98.7% positive feedback.", fit: "contain", height: "compact" },
+      { type: "img", src: amazonSeller, eyebrow: "02 / Active marketplace build", caption: "Amazon Seller Central UK account in healthy standing, with four products currently in setup and marketplace expansion research underway.", fit: "contain", height: "tall" },
       { type: "text", heading: "Current scope", body: "The marketplace work covers product and competitor research, account configuration, listing preparation and launch sequencing. Any future performance figures will be added only after live sales data exists and can be verified." },
     ],
   },
@@ -716,12 +732,13 @@ function Reveal({ children, delay = 0, className = "" }) {
   );
 }
 
-function ProjectImage({ src, caption, onClick, focusPosition = "50% 50%", focusScale = 1 }) {
+function ProjectImage({ src, caption, onClick, focusPosition = "50% 50%", focusScale = 1, eyebrow, fit = "cover", height = "default" }) {
   const [failed, setFailed] = useState(false);
   return (
-    <div className="project-image" onClick={onClick} style={{ cursor: "pointer" }}>
+    <div className={`project-image project-image--${height}`} onClick={onClick} style={{ cursor: "pointer" }}>
+      {eyebrow && <p className="project-image-eyebrow">{eyebrow}</p>}
       {!failed ? (
-        <div className="project-image-frame" style={{ "--focus-position": focusPosition, "--focus-scale": focusScale }}>
+        <div className={`project-image-frame project-image-frame--${fit}`} style={{ "--focus-position": focusPosition, "--focus-scale": focusScale }}>
           <img src={src} alt={caption} onError={() => setFailed(true)} />
         </div>
       ) : (
@@ -1063,7 +1080,7 @@ function CaseStudy({ project, onClose }) {
             View Upwork Profile <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg>
           </a>
           {project.url && <a href={project.url} target="_blank" rel="noopener noreferrer" className="case-study-link case-study-website">Verify on live site <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14L21 3"/></svg></a>}
-          {project.publicEmail && <a href={`mailto:${project.publicEmail}`} className="case-study-link">Official project email: {project.publicEmail}</a>}
+          {project.publicEmail && <a href={`mailto:${project.publicEmail}?subject=Work%20verification%20for%20Hassan%20Ali`} className="case-study-link case-study-email">Work verification: {project.publicEmail}</a>}
         </div>
       </motion.div>
     </motion.div>
