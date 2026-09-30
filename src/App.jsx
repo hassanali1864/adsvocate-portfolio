@@ -21,7 +21,7 @@ import fhcGoogle from './assets/projects/fhc-google-ads.png';
 import fhcGtm from './assets/projects/fhc-gtm.png';
 import fhcMeta from './assets/projects/fhc-meta-creatives.png';
 import academyGoogle from './assets/projects/academy-google-ads.png';
-import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
+import resumePdf from './assets/Hassan_Ali_Performance_Marketing_CV_2026.pdf';
 import creativePortfolioPdf from './assets/Hassan_Ali_Creative_Portfolio_2026.pdf';
 import ukSofaSite from './assets/projects/evidence/uk-sofa-site.png';
 import fhcSite from './assets/projects/evidence/fhc-site.png';
@@ -573,7 +573,7 @@ const CURRENT_WORK = [
     role: "End-to-end build — WordPress, CRO, free-trial offer, Search structure and measurement",
     category: "Online Education",
     tags: ["WordPress", "Google Ads", "CRO", "Offer Strategy"],
-    proof: "Website, trial offer, course routes and Search intent aligned into one acquisition path.",
+    proof: "7 students acquired · £425 monthly recurring revenue from approximately £325 in one-time advertising spend.",
     media: academySite,
     mediaLabel: "Website designed and built by Hassan",
     coverPosition: "50% 48%",
@@ -581,13 +581,14 @@ const CURRENT_WORK = [
     url: "https://alsadiqglobalquranacademy.co.uk/",
     publicEmail: "info@alsadiqglobalquranacademy.co.uk",
     metrics: [
-      { label: "Primary offer", value: "Free 30-min trial" },
-      { label: "Learning model", value: "Live 1-to-1" },
-      { label: "Website", value: "Built end-to-end" },
+      { label: "Students acquired", value: "7" },
+      { label: "Monthly recurring revenue", value: "£425" },
+      { label: "One-time ad spend", value: "≈£325" },
     ],
     content: [
       { type: "text", heading: "The journey", body: "I built the full WordPress experience around the actual decision a parent or adult learner needs to make: understand the live 1-to-1 format, see the available courses and start with a free 30-minute trial. The introductory offer, landing page and enquiry route work as one system." },
       { type: "img", src: academySite, eyebrow: "01 / Offer and website", caption: "The live Academy website, built around a free 30-minute trial and clear 1-to-1 learning routes.", fit: "contain", height: "wide" },
+      { type: "text", heading: "Commercial result", body: "The Academy acquired 7 students and now generates £425 in monthly recurring revenue. The initial advertising spend was PKR 120,000—approximately £325—and was a one-time investment, while the £425 figure is ongoing monthly recurring revenue." },
       { type: "text", heading: "Acquisition and measurement", body: "Search intent is grouped around relevant learning needs and connected to the closest page. Trial and enrolment outcomes are handled in the Academy's private operating records; the advertising platform is deliberately not fed sensitive or religious-profile data. This keeps the public reporting honest while still giving the team a commercial view internally." },
       { type: "img", src: academyGoogle, eyebrow: "02 / Search campaign", caption: "Google Ads account activity for Quran classes. Platform data documents traffic and campaign activity; it is not presented as a complete enrolment register.", fit: "contain", height: "wide" },
     ],
@@ -818,7 +819,7 @@ function Hero() {
               <button className="btn-primary" onClick={() => navScrollTo("contact")}>Discuss a Project <Arr /></button>
               <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-outline">WhatsApp Me</a>
             </div>
-            <a href={resumePdf} download="Hassan_Ali_Resume_v3.pdf" className="hero-dl-link fade-up d5"><Download size={13} />Download Resume</a>
+            <a href={resumePdf} download="Hassan_Ali_Performance_Marketing_CV_2026.pdf" className="hero-dl-link fade-up d5"><Download size={13} />Download Resume</a>
             <div className="hero-tags fade-up d5">
               {["Google Ads Certified", "GA4 Certified", "Meta Ads Certified"].map((t, i) => <span key={i} className="hero-tag">{t}</span>)}
             </div>
