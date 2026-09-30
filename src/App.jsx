@@ -22,6 +22,7 @@ import fhcGtm from './assets/projects/fhc-gtm.png';
 import fhcMeta from './assets/projects/fhc-meta-creatives.png';
 import academyGoogle from './assets/projects/academy-google-ads.png';
 import resumePdf from './assets/Hassan_Ali_Resume_v3.pdf';
+import vistaCss from './vista.css?inline';
 import { Download } from 'lucide-react';
 
 // ─────────────────────────────────────────────
@@ -392,8 +393,6 @@ const PLATFORMS = [
   { name: "YouTube", slug: "youtube", color: "#FF0000" },
   { name: "Instagram", slug: "instagram", color: "#E1306C" },
   { name: "Facebook", slug: "facebook", color: "#1877F2" },
-  { name: "Amazon", slug: "amazon", color: "#FF9900" },
-  { name: "eBay", slug: "ebay", color: "#E53238" },
 ];
 
 const CERTS = [
@@ -1200,21 +1199,323 @@ function Footer() {
   );
 }
 
+const Arrow = () => (
+  <svg className="v-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.4" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+    <path d="M7 17L17 7M17 7H7M17 7v10"/>
+  </svg>
+);
+
+function VistaNav() {
+  const [open, setOpen] = useState(false);
+  useEffect(() => {
+    document.body.classList.toggle("menu-open", open);
+    return () => document.body.classList.remove("menu-open");
+  }, [open]);
+  const go = id => { setOpen(false); navScrollTo(id); };
+  const routes = [
+    ["01", "Work", "Nine visible case studies", "work"],
+    ["02", "Services", "Ads, web and measurement", "services"],
+    ["03", "Credentials", "Verified certifications", "certifications"],
+    ["04", "Contact", "Go directly to the form", "project-form"],
+  ];
+  return (
+    <>
+      <div className="v-signal">
+        <div className="v-container v-signal-inner">
+          <strong>Paid acquisition · CRO · measurement</strong>
+          <span>Google + Meta + websites + the tracking between them</span>
+        </div>
+      </div>
+      <nav className="v-nav" aria-label="Primary navigation">
+        <div className="v-container v-nav-inner">
+          <button className="v-logo" onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })} aria-label="Adsvocate home">
+            <span className="logo-ads">ads</span><span className="logo-vocate">vocate</span>
+          </button>
+          <div className="v-links">
+            {routes.map(route => <button key={route[0]} className="v-link" onClick={() => go(route[3])}>{route[1]}</button>)}
+            <button className="v-button v-button--light v-button--small" onClick={() => go("project-form")}>Discuss a project <Arrow /></button>
+          </div>
+          <button className="v-menu-toggle" onClick={() => setOpen(v => !v)} aria-expanded={open} aria-label={open ? "Close menu" : "Open menu"}>
+            {open ? "×" : "☰"}
+          </button>
+        </div>
+      </nav>
+      <AnimatePresence>
+        {open && (
+          <motion.div className="v-mobile-menu" initial={{ x: 440 }} animate={{ x: 0 }} exit={{ x: 440 }} transition={{ duration: .28, ease: [0.22,1,0.36,1] }}>
+            <div className="v-mobile-routes">
+              {routes.map(route => (
+                <button key={route[0]} className="v-mobile-route" onClick={() => go(route[3])}>
+                  <span>{route[0]}</span><b>{route[1]}</b><small>{route[2]}</small><Arrow />
+                </button>
+              ))}
+            </div>
+            <div className="v-mobile-menu-actions">
+              <a className="v-button v-button--primary" href={resumePdf} download>Download CV <Download size={16} /></a>
+              <a className="v-button v-button--light" href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio <Arrow /></a>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+}
+
+function VistaHero() {
+  const routes = [
+    ["01", "Paid acquisition", "Google + Meta"],
+    ["02", "Web + CRO", "WordPress + Next.js"],
+    ["03", "Measurement", "GTM + GA4 + CAPI"],
+    ["04", "Commercial clarity", "From click to outcome"],
+  ];
+  return (
+    <header className="v-hero">
+      <div className="v-container v-hero-main">
+        <div className="v-hero-copy">
+          <p className="v-kicker" style={{ color: "var(--teal-soft)" }}>Hassan Ali · Performance marketing systems</p>
+          <h1>I build the path <em>from demand to result.</em></h1>
+          <p className="v-hero-lead">Paid media works better when the offer, website and measurement layer are built as one commercial system. That is the work shown here.</p>
+          <div className="v-hero-actions">
+            <button className="v-button v-button--primary" onClick={() => navScrollTo("project-form")}>Discuss a project <Arrow /></button>
+            <a className="v-button v-button--light" href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio <Arrow /></a>
+          </div>
+          <div className="v-hero-links">
+            <a className="v-text-link" href={resumePdf} download><Download size={15} /> Download CV</a>
+            <a className="v-text-link" href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp me <Arrow /></a>
+            <a className="v-text-link" href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer">Upwork profile <Arrow /></a>
+          </div>
+        </div>
+        <div className="v-portrait">
+          <img src={hassanPhoto} alt="Hassan Ali at his workspace" />
+          <div className="v-portrait-label"><b>Hassan Ali</b><small>Strategy, campaigns, websites and tracking</small></div>
+        </div>
+      </div>
+      <div className="v-container v-route-index">
+        {routes.map(route => <div className="v-route" key={route[0]}><span>{route[0]}</span><b>{route[1]}</b><small>{route[2]}</small></div>)}
+      </div>
+    </header>
+  );
+}
+
+function portfolioItems() {
+  const current = CURRENT_WORK.map((project, index) => ({ ...project, portfolioNumber: String(index + 1).padStart(2, "0") }));
+  const technical = PROJECTS.map((project, index) => {
+    const firstImage = project.content.find(block => block.type === "img");
+    return {
+      ...project,
+      portfolioNumber: String(index + 6).padStart(2, "0"),
+      proof: project.metrics.map(metric => `${metric.value} ${metric.label}`).join(" · "),
+      media: firstImage?.src,
+      mediaLabel: project.category,
+      coverPosition: "50% 48%",
+      coverScale: 1.05,
+    };
+  });
+  return [...current, ...technical];
+}
+
+function VistaWorkCard({ project, index, onOpen }) {
+  const small = index >= 4;
+  return (
+    <motion.button
+      className={`v-work-card ${small ? "v-work-card--small" : ""}`}
+      onClick={() => onOpen(project)}
+      aria-label={`Open case study ${project.portfolioNumber}: ${project.title}`}
+      initial={{ opacity: 0, y: 24 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true, amount: .12 }}
+      transition={{ duration: .48, delay: Math.min(index, 4) * .06 }}
+    >
+      <span className="v-card-arrow"><Arrow /></span>
+      {project.media ? (
+        <div className="v-work-card-media" style={{ "--card-position": project.coverPosition, "--card-scale": project.coverScale }}>
+          <img src={project.media} alt="" />
+          <span>{project.mediaLabel || project.category}</span>
+        </div>
+      ) : (
+        <div className="v-work-card-type">
+          <span>{project.portfolioNumber} / CASE STUDY</span>
+          <strong>{project.title}</strong>
+        </div>
+      )}
+      <div className="v-work-card-body">
+        <div className="v-work-kicker"><span>{project.category}</span><span>{project.portfolioNumber}</span></div>
+        <h3>{project.title}</h3>
+        <p className="v-work-subtitle">{project.subtitle}</p>
+        <p className="v-work-proof">{project.proof}</p>
+      </div>
+    </motion.button>
+  );
+}
+
+function VistaWork() {
+  const [modal, setModal] = useState(null);
+  const items = portfolioItems();
+  return (
+    <section id="work" className="v-section v-work">
+      <div className="v-container">
+        <div className="v-section-intro">
+          <div><p className="v-kicker">Selected systems · 01—09</p><h2 className="v-section-title">The work stays visible.</h2></div>
+          <p>Nine current and technical case studies, presented in one consistent system. No hidden archive and no horizontal rail. Open any card for the implementation detail and supporting evidence.</p>
+        </div>
+        <div className="v-work-grid">
+          {items.map((project, index) => <VistaWorkCard key={project.id} project={project} index={index} onOpen={setModal} />)}
+        </div>
+        <div className="v-work-actions">
+          <p>Creative work lives in one focused visual portfolio. The case studies above cover acquisition, websites and measurement without mixing private client material into public links.</p>
+          <div className="v-action-links">
+            <a className="v-button v-button--outline v-button--small" href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio <Arrow /></a>
+            <a className="v-button v-button--outline v-button--small" href={resumePdf} download>Download CV <Download size={15} /></a>
+          </div>
+        </div>
+      </div>
+      <AnimatePresence>{modal && <CaseStudy project={modal} onClose={() => setModal(null)} />}</AnimatePresence>
+    </section>
+  );
+}
+
+function VistaServices() {
+  return (
+    <section id="services" className="v-section v-services">
+      <div className="v-container">
+        <div className="v-section-intro">
+          <div><p className="v-kicker">What I connect</p><h2 className="v-section-title">Three jobs. One commercial system.</h2></div>
+          <p>Campaign management is only useful when the destination converts and the measurement reflects the result the business actually values.</p>
+        </div>
+        <div className="v-service-grid">
+          {SERVICES.map((service,index) => (
+            <article className="v-service-card" key={service.title}>
+              <span className="v-service-num">0{index + 1} / CAPABILITY</span>
+              <h3>{service.title}</h3>
+              <p>{service.desc}</p>
+              <strong>{service.highlight}</strong>
+            </article>
+          ))}
+        </div>
+        <div className="v-tool-board">
+          <div className="v-tool-head"><span>Working stack</span><span>Used across planning, implementation and QA</span></div>
+          <div className="v-tool-grid">
+            {PLATFORMS.slice(0,10).map(tool => <div className="v-tool" key={tool.name}><Ico slug={tool.slug} size={20} style={{ filter: "invert(1)" }} /><span>{tool.name}</span></div>)}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VistaCertifications() {
+  return (
+    <section id="certifications" className="v-section v-certs">
+      <div className="v-container">
+        <div className="v-section-intro">
+          <div><p className="v-kicker">Verified credentials</p><h2 className="v-section-title">Proof without the card clutter.</h2></div>
+          <p>Credentials are listed as one verification board, following the same structured, visible treatment as the rest of the portfolio.</p>
+        </div>
+        <div className="v-cert-board">
+          <div className="v-cert-head"><span>Credential register</span><span>Open issuer verification</span></div>
+          {CERTS.map((cert,index) => (
+            <a className="v-cert" href={cert.url} target="_blank" rel="noopener noreferrer" key={cert.name}>
+              <div className="v-cert-icon"><Ico slug={cert.slug} size={21} /></div>
+              <div><h3>{String(index + 1).padStart(2,"0")} · {cert.name}</h3><p>{cert.issuer} · {cert.date}</p></div>
+              <span className="v-cert-verify">Verify <Arrow /></span>
+            </a>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+function VistaContact() {
+  const [form, setForm] = useState({ name: "", email: "", whatsapp: "", website: "", service: "", message: "" });
+  const [status, setStatus] = useState("idle");
+  const submit = async e => {
+    e.preventDefault();
+    setStatus("sending");
+    try {
+      const response = await fetch("https://api.emailjs.com/api/v1.0/email/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ service_id: EMAILJS.service_id, template_id: EMAILJS.template_id, user_id: EMAILJS.user_id, template_params: { from_name: form.name, from_email: form.email, whatsapp: form.whatsapp, website: form.website, service: form.service, message: form.message } }),
+      });
+      setStatus(response.ok ? "done" : "error");
+    } catch { setStatus("error"); }
+  };
+  return (
+    <>
+      <section id="contact" className="v-section v-contact">
+        <div className="v-container v-contact-grid">
+          <div className="v-contact-copy">
+            <p className="v-kicker">Start a conversation</p>
+            <h2>Bring me the business problem.</h2>
+            <p>Tell me what needs to improve, what is already in place and where the current system is losing momentum.</p>
+            <div className="v-direct-links">
+              <a className="v-direct-link" href={WA_LINK} target="_blank" rel="noopener noreferrer"><span className="v-direct-icon">WA</span><span><small>Fastest response</small><b>WhatsApp Hassan</b></span><Arrow /></a>
+              <a className="v-direct-link" href={`mailto:${HASSAN_EMAIL}`}><span className="v-direct-icon">@</span><span><small>Email</small><b>{HASSAN_EMAIL}</b></span><Arrow /></a>
+            </div>
+          </div>
+          <div id="project-form" className="v-form-card">
+            <h3>Project enquiry</h3>
+            {status === "done" ? (
+              <div className="v-form-success"><h3>Received.</h3><p>I will reply within 24 hours. WhatsApp is usually faster if the project is time-sensitive.</p></div>
+            ) : (
+              <form className="v-form" onSubmit={submit}>
+                <div className="v-form-row"><input className="v-field" placeholder="Name *" required value={form.name} onChange={e => setForm({...form,name:e.target.value})} /><input className="v-field" type="email" placeholder="Email *" required value={form.email} onChange={e => setForm({...form,email:e.target.value})} /></div>
+                <div className="v-form-row"><input className="v-field" placeholder="WhatsApp number" value={form.whatsapp} onChange={e => setForm({...form,whatsapp:e.target.value})} /><input className="v-field" placeholder="Website URL" value={form.website} onChange={e => setForm({...form,website:e.target.value})} /></div>
+                <select className="v-field" required value={form.service} onChange={e => setForm({...form,service:e.target.value})}>
+                  <option value="">What do you need? *</option><option>Google Ads setup + management</option><option>Meta Ads setup + management</option><option>Website + CRO</option><option>Measurement: GTM / GA4 / CAPI</option><option>Full acquisition system</option><option>Something else</option>
+                </select>
+                <textarea className="v-field" placeholder="What are you trying to improve?" value={form.message} onChange={e => setForm({...form,message:e.target.value})}></textarea>
+                <button className="v-button v-button--primary" type="submit" disabled={status === "sending"}>{status === "sending" ? "Sending…" : <>Send project enquiry <Arrow /></>}</button>
+                {status === "error" && <p className="v-form-error">The form did not send. Please use WhatsApp or email instead.</p>}
+              </form>
+            )}
+          </div>
+        </div>
+      </section>
+      <section className="v-faq" aria-labelledby="faq-title">
+        <div className="v-container v-faq-layout">
+          <div><p className="v-kicker">After the form</p><h2 id="faq-title">Common questions.</h2></div>
+          <div className="v-faq-list"><FAQAccordion /></div>
+        </div>
+      </section>
+    </>
+  );
+}
+
+function VistaFooter() {
+  return (
+    <>
+      <footer className="v-footer">
+        <div className="v-container">
+          <div className="v-footer-main">
+            <div><div className="v-logo"><span className="logo-ads">ads</span><span className="logo-vocate">vocate</span></div><p className="v-footer-copy">Paid acquisition, websites and measurement designed as one practical commercial system.</p></div>
+            <div className="v-footer-col"><h3>Evidence</h3><button className="v-link" onClick={() => navScrollTo("work")}>Case studies</button><a href={CREATIVE_PORTFOLIO_URL} target="_blank" rel="noopener noreferrer">Creative portfolio</a><a href={resumePdf} download>Download CV</a></div>
+            <div className="v-footer-col"><h3>Contact</h3><a href={WA_LINK} target="_blank" rel="noopener noreferrer">WhatsApp</a><a href={`mailto:${HASSAN_EMAIL}`}>{HASSAN_EMAIL}</a><a href="https://www.upwork.com/freelancers/adsvocate" target="_blank" rel="noopener noreferrer">Upwork</a></div>
+          </div>
+          <div className="v-footer-bottom"><span>© 2026 Hassan Ali · Islamabad, Pakistan</span><span>Strategy · implementation · verification</span></div>
+        </div>
+      </footer>
+      <a className="v-whatsapp" href={WA_LINK} target="_blank" rel="noopener noreferrer" aria-label="WhatsApp Hassan">WA <span>WhatsApp Hassan</span></a>
+    </>
+  );
+}
+
 // ─────────────────────────────────────────────
 // APP
 // ─────────────────────────────────────────────
 export default function App() {
   return (
     <>
-      <style>{CSS}</style>
-      <Nav />
-      <Hero />
-      <StatsStrip />
-      <WorkSection />
-      <ServicesSection />
-      <CertsSection />
-      <ContactSection />
-      <Footer />
+      <style>{vistaCss}</style>
+      <div className="page-grid" aria-hidden="true" />
+      <VistaNav />
+      <VistaHero />
+      <VistaWork />
+      <VistaServices />
+      <VistaCertifications />
+      <VistaContact />
+      <VistaFooter />
     </>
   );
 }
